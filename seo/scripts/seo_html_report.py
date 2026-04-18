@@ -12,8 +12,33 @@ import json
 import argparse
 import sys
 import os
+import subprocess
+import threading
+import webbrowser
+import time
 from datetime import datetime
 from pathlib import Path
+
+SERVER_PORT = 8888
+_server_started = False
+
+def _ensure_server(report_dir: str):
+    """Start a local HTTP server in the background if not already running."""
+    global _server_started
+    import socket
+    try:
+        sock = socket.create_connection(("127.0.0.1", SERVER_PORT), timeout=1)
+        sock.close()
+        return  # already running
+    except OSError:
+        pass
+    subprocess.Popen(
+        ["python3", "-m", "http.server", str(SERVER_PORT), "--directory", report_dir],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    time.sleep(1)
+    _server_started = True
 
 
 def score_color(s):
@@ -478,10 +503,20 @@ def main():
 
     html = generate_html(data)
 
-    out = Path(args.output)
+    out = Path(args.output).resolve()
     out.write_text(html, encoding="utf-8")
-    print(f"✓ Report saved → {out.resolve()}")
-    print(f"  Open in browser: file://{out.resolve()}")
+
+    # Start local server and open browser
+    report_dir = str(out.parent)
+    _ensure_server(report_dir)
+    url = f"http://localhost:{SERVER_PORT}/{out.name}"
+    print(f"✓ Report saved → {out}")
+    print(f"  👁  Preview: {url}")
+    print(f"  (The report opens automatically — or paste the URL above into your browser)")
+    try:
+        webbrowser.open(url)
+    except Exception:
+        pass
 
 
 if __name__ == "__main__":

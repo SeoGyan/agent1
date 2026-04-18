@@ -103,8 +103,13 @@ If no JSON data file exists, build the data dict from the audit findings in memo
 echo '<json>' | python scripts/seo_html_report.py --domain <domain> --output seo-report-<domain>.html
 ```
 
+The script automatically:
+1. Starts a local HTTP server on port 8888 (if not already running)
+2. Opens the report in the user's default browser at `http://localhost:8888/seo-report-<domain>.html`
+
 **Always tell the user:**
-> ✅ Report saved as `seo-report-<domain>.html` — open it in your browser to preview. Use the **Save as PDF** button inside the report to download a PDF.
+> ✅ Report opening in your browser at **http://localhost:8888/seo-report-gyandhan.html**
+> — Use **⬇ Download HTML** or **🖨 Save as PDF** buttons inside the report.
 
 The report includes:
 - Overall SEO score gauge
