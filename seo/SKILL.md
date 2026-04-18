@@ -90,6 +90,30 @@ Hard rules:
 - FAQ schema for Google rich results: only government and healthcare sites (Aug 2023 restriction); existing FAQPage on commercial sites -> flag Info priority (not Critical), noting AI/LLM citation benefit; adding new FAQPage -> not recommended for Google benefit
 - All Core Web Vitals references use INP, never FID
 
+## HTML Report Generation
+
+After completing any audit (`/seo audit`, `/seo page`, `/seo technical`, `/seo local`, `/seo geo`, `/seo content`, `/seo schema`), automatically generate a beautiful HTML report:
+
+```bash
+python scripts/seo_html_report.py --data audit-data.json --domain <domain> --output seo-report-<domain>.html
+```
+
+If no JSON data file exists, build the data dict from the audit findings in memory and pass it via stdin:
+```bash
+echo '<json>' | python scripts/seo_html_report.py --domain <domain> --output seo-report-<domain>.html
+```
+
+**Always tell the user:**
+> ✅ Report saved as `seo-report-<domain>.html` — open it in your browser to preview. Use the **Save as PDF** button inside the report to download a PDF.
+
+The report includes:
+- Overall SEO score gauge
+- Radar chart of all category scores
+- Color-coded issues by priority (Critical / High / Medium / Low)
+- Detailed section analysis cards
+- Prioritized action plan table
+- Download HTML button + Save as PDF button (built in)
+
 ## Reference Files
 
 Load these on-demand as needed (do NOT load all at startup):
