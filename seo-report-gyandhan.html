@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SEO Audit Report — gyandhan.com</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#020617;color:#e2e8f0;min-height:100vh;}
+  .topbar{background:#0f172a;border-bottom:1px solid #1e293b;padding:14px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;}
+  .logo{font-size:18px;font-weight:800;color:#f1f5f9;letter-spacing:-.3px;}
+  .logo span{color:#3b82f6;}
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:none;text-decoration:none;transition:opacity .2s;}
+  .btn:hover{opacity:.85;}
+  .btn-primary{background:#3b82f6;color:white;}
+  .btn-secondary{background:#1e293b;color:#cbd5e1;border:1px solid #334155;}
+  .btn-group{display:flex;gap:8px;}
+  .hero{background:linear-gradient(135deg,#0f172a 0%,#0c1220 100%);border-bottom:1px solid #1e293b;padding:48px 32px;}
+  .hero-inner{max-width:1100px;margin:0 auto;display:flex;gap:48px;align-items:center;flex-wrap:wrap;}
+  .hero-gauge{text-align:center;flex-shrink:0;}
+  .hero-info{flex:1;min-width:280px;}
+  .hero-domain{font-size:28px;font-weight:800;color:#f1f5f9;margin-bottom:6px;}
+  .hero-meta{color:#64748b;font-size:14px;margin-bottom:16px;}
+  .hero-summary{color:#94a3b8;font-size:15px;line-height:1.6;max-width:600px;}
+  .stat-pills{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+  .pill{background:#1e293b;border:1px solid #334155;border-radius:20px;padding:6px 14px;font-size:13px;color:#94a3b8;}
+  .pill strong{color:#f1f5f9;}
+  .main{max-width:1100px;margin:0 auto;padding:32px;}
+  .section-title{font-size:20px;font-weight:700;color:#f1f5f9;margin:32px 0 16px;padding-bottom:10px;border-bottom:1px solid #1e293b;}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .radar-wrap{background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:20px;}
+  @media print{
+    .topbar .btn-group{display:none;}
+    body{background:white;color:#1e293b;}
+    .topbar,.hero{background:white!important;border-color:#e2e8f0!important;}
+    .hero-domain,.section-title{color:#1e293b!important;}
+  }
+  @media(max-width:700px){
+    .hero-inner{flex-direction:column;}
+    .grid-2{grid-template-columns:1fr;}
+    .topbar{flex-direction:column;gap:12px;}
+  }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="logo">SEO<span>.</span>Report</div>
+  <div class="btn-group">
+    <button class="btn btn-secondary" onclick="downloadHTML()">&#11015; Download HTML</button>
+    <button class="btn btn-primary" onclick="window.print()">&#128424; Save as PDF</button>
+  </div>
+</div>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-gauge">
+      <svg width="180" height="180" viewBox="0 0 120 120">
+  <circle cx="60" cy="60" r="54" fill="none" stroke="#1e293b" stroke-width="10"/>
+  <circle cx="60" cy="60" r="54" fill="none" stroke="#f97316" stroke-width="10"
+    stroke-dasharray="190.0 149.3"
+    stroke-dashoffset="84.8"
+    stroke-linecap="round" transform="rotate(-90 60 60)"/>
+  <text x="60" y="55" text-anchor="middle" fill="white" font-size="22" font-weight="700">56</text>
+  <text x="60" y="72" text-anchor="middle" fill="#f97316" font-size="9" font-weight="600">POOR</text>
+</svg>
+      <div style="color:#64748b;font-size:12px;margin-top:4px;">Overall SEO Score</div>
+    </div>
+    <div class="hero-info">
+      <div class="hero-domain">gyandhan.com</div>
+      <div class="hero-meta">Audit Date: April 18, 2026 &nbsp;&middot;&nbsp; Business Type: EdTech / FinTech</div>
+      <div class="hero-summary">The site has strong content and brand signals but is blocked to all crawlers including Googlebot. Fixing bot-protection, adding schema markup, and creating an llms.txt will unlock the largest ranking gains.</div>
+      <div class="stat-pills">
+        <div class="pill">Issues: <strong style="color:#ef4444;">12</strong></div>
+        <div class="pill">Critical: <strong style="color:#ef4444;">3</strong></div>
+        <div class="pill">Actions: <strong style="color:#3b82f6;">15</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="main">
+  <div class="section-title">Score Breakdown</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px;">
+    <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;"><div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">Technical SEO</div><div style="font-size:28px;font-weight:800;color:#f97316;">55</div><div style="width:80px;background:#1e293b;border-radius:4px;height:8px;margin:6px auto 0;"><div style="width:55%;background:#f97316;height:8px;border-radius:4px;"></div></div><div style="font-size:11px;color:#f97316;margin-top:6px;">Poor</div></div>
+    <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;"><div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">Content Quality</div><div style="font-size:28px;font-weight:800;color:#f59e0b;">70</div><div style="width:80px;background:#1e293b;border-radius:4px;height:8px;margin:6px auto 0;"><div style="width:70%;background:#f59e0b;height:8px;border-radius:4px;"></div></div><div style="font-size:11px;color:#f59e0b;margin-top:6px;">Needs Work</div></div>
+    <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;"><div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">On-Page SEO</div><div style="font-size:28px;font-weight:800;color:#f59e0b;">62</div><div style="width:80px;background:#1e293b;border-radius:4px;height:8px;margin:6px auto 0;"><div style="width:62%;background:#f59e0b;height:8px;border-radius:4px;"></div></div><div style="font-size:11px;color:#f59e0b;margin-top:6px;">Needs Work</div></div>
+    <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;"><div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">Schema Markup</div><div style="font-size:28px;font-weight:800;color:#ef4444;">28</div><div style="width:80px;background:#1e293b;border-radius:4px;height:8px;margin:6px auto 0;"><div style="width:28%;background:#ef4444;height:8px;border-radius:4px;"></div></div><div style="font-size:11px;color:#ef4444;margin-top:6px;">Critical</div></div>
+    <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;"><div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">Performance</div><div style="font-size:28px;font-weight:800;color:#f97316;">50</div><div style="width:80px;background:#1e293b;border-radius:4px;height:8px;margin:6px auto 0;"><div style="width:50%;background:#f97316;height:8px;border-radius:4px;"></div></div><div style="font-size:11px;color:#f97316;margin-top:6px;">Poor</div></div>
+    <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;"><div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">AI Search</div><div style="font-size:28px;font-weight:800;color:#f97316;">46</div><div style="width:80px;background:#1e293b;border-radius:4px;height:8px;margin:6px auto 0;"><div style="width:46%;background:#f97316;height:8px;border-radius:4px;"></div></div><div style="font-size:11px;color:#f97316;margin-top:6px;">Poor</div></div>
+    <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;"><div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">Images</div><div style="font-size:28px;font-weight:800;color:#f97316;">50</div><div style="width:80px;background:#1e293b;border-radius:4px;height:8px;margin:6px auto 0;"><div style="width:50%;background:#f97316;height:8px;border-radius:4px;"></div></div><div style="font-size:11px;color:#f97316;margin-top:6px;">Poor</div></div>
+  </div>
+  <div class="grid-2">
+    <div class="radar-wrap">
+      <div style="font-size:15px;font-weight:700;color:#f1f5f9;margin-bottom:16px;">Radar Overview</div>
+      <canvas id="radarChart" style="max-height:300px;"></canvas>
+      <script>new Chart(document.getElementById('radarChart'),{type:'radar',data:{labels:["Technical","Content","On Page","Schema","Performance","AI Search","Images"],datasets:[{label:'SEO Score',data:[55,70,62,28,50,46,50],backgroundColor:'rgba(59,130,246,.15)',borderColor:'#3b82f6',pointBackgroundColor:'#3b82f6',pointRadius:4,borderWidth:2}]},options:{responsive:true,scales:{r:{min:0,max:100,ticks:{color:'#475569',font:{size:10},backdropColor:'transparent',stepSize:25},grid:{color:'#1e293b'},pointLabels:{color:'#94a3b8',font:{size:11}}}},plugins:{legend:{display:false}}}});</script>
+    </div>
+    <div>
+      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:20px;">
+        <div style="font-size:16px;font-weight:700;color:#f1f5f9;margin-bottom:12px;">Quick Wins</div>
+        <ul style="list-style:none;padding:0;margin:0;">
+          <li style="padding:6px 0;border-bottom:1px solid #1e293b;color:#cbd5e1;font-size:14px;">Whitelist Googlebot &amp; GPTBot in Cloudflare (2 hrs)</li>
+          <li style="padding:6px 0;border-bottom:1px solid #1e293b;color:#cbd5e1;font-size:14px;">Add Organization + FinancialService JSON-LD (2 hrs)</li>
+          <li style="padding:6px 0;border-bottom:1px solid #1e293b;color:#cbd5e1;font-size:14px;">Create llms.txt at root domain (1 hr)</li>
+          <li style="padding:6px 0;border-bottom:1px solid #1e293b;color:#cbd5e1;font-size:14px;">Add AggregateRating schema — JustDial 4.7&#9733; (1 hr)</li>
+          <li style="padding:6px 0;border-bottom:1px solid #1e293b;color:#cbd5e1;font-size:14px;">Claim Bing Places (30 min)</li>
+          <li style="padding:6px 0;color:#cbd5e1;font-size:14px;">Claim Apple Business Connect (30 min)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="section-title">Issues Found</div>
+  <div style="margin-bottom:20px;border-radius:10px;overflow:hidden;border:1px solid #fca5a5;"><div style="background:#ef4444;padding:8px 16px;"><span style="color:white;font-weight:700;font-size:13px;">CRITICAL &nbsp; 3</span></div><div style="background:#0f172a;padding:12px 16px;"><div style="padding:8px 0;border-bottom:1px solid #1e293b;"><span style="font-weight:600;color:#f1f5f9;">All crawlers blocked (HTTP 403)</span><div style="color:#94a3b8;font-size:13px;margin-top:4px;">Googlebot, GPTBot, and Bingbot all receive 403. Whitelist verified bots in Cloudflare WAF.</div></div><div style="padding:8px 0;border-bottom:1px solid #1e293b;"><span style="font-weight:600;color:#f1f5f9;">robots.txt returns 403</span><div style="color:#94a3b8;font-size:13px;margin-top:4px;">Google requires robots.txt to be publicly readable.</div></div><div style="padding:8px 0;"><span style="font-weight:600;color:#f1f5f9;">No schema markup on any page</span><div style="color:#94a3b8;font-size:13px;margin-top:4px;">Zero JSON-LD detected. No rich result eligibility.</div></div></div></div>
+  <div style="margin-bottom:20px;border-radius:10px;overflow:hidden;border:1px solid #fdba74;"><div style="background:#f97316;padding:8px 16px;"><span style="color:white;font-weight:700;font-size:13px;">HIGH &nbsp; 4</span></div><div style="background:#0f172a;padding:12px 16px;"><div style="padding:8px 0;border-bottom:1px solid #1e293b;"><span style="font-weight:600;color:#f1f5f9;">/loaneligs non-keyword URL</span><div style="color:#94a3b8;font-size:13px;margin-top:4px;">301 redirect to /apply-education-loan-abroad.</div></div><div style="padding:8px 0;border-bottom:1px solid #1e293b;"><span style="font-weight:600;color:#f1f5f9;">No AggregateRating schema</span><div style="color:#94a3b8;font-size:13px;margin-top:4px;">JustDial 4.7&#9733; 1,583 reviews not surfaced in SERP.</div></div><div style="padding:8px 0;border-bottom:1px solid #1e293b;"><span style="font-weight:600;color:#f1f5f9;">No llms.txt file</span><div style="color:#94a3b8;font-size:13px;margin-top:4px;">ChatGPT, Perplexity, and Claude cannot prioritize your pages.</div></div><div style="padding:8px 0;"><span style="font-weight:600;color:#f1f5f9;">No Wikipedia article</span><div style="color:#94a3b8;font-size:13px;margin-top:4px;">ChatGPT cites Wikipedia in 47.9% of responses.</div></div></div></div>
+  <div style="margin-bottom:20px;border-radius:10px;overflow:hidden;border:1px solid #fcd34d;"><div style="background:#f59e0b;padding:8px 16px;"><span style="color:white;font-weight:700;font-size:13px;">MEDIUM &nbsp; 3</span></div><div style="background:#0f172a;padding:12px 16px;"><div style="padding:8px 0;border-bottom:1px solid #1e293b;"><span style="font-weight:600;color:#f1f5f9;">No publication dates on blog articles</span><div style="color:#94a3b8;font-size:13px;margin-top:4px;">Financial content (YMYL) needs visible Last Updated dates.</div></div><div style="padding:8px 0;border-bottom:1px solid #1e293b;"><span style="font-weight:600;color:#f1f5f9;">discussions subdomain splits authority</span><div style="color:#94a3b8;font-size:13px;margin-top:4px;">Move to /community or add canonical.</div></div><div style="padding:8px 0;"><span style="font-weight:600;color:#f1f5f9;">City pages — doorway page risk</span><div style="color:#94a3b8;font-size:13px;margin-top:4px;">30+ city pages may have swappable content.</div></div></div></div>
+  <div style="margin-bottom:20px;border-radius:10px;overflow:hidden;border:1px solid #93c5fd;"><div style="background:#3b82f6;padding:8px 16px;"><span style="color:white;font-weight:700;font-size:13px;">LOW &nbsp; 2</span></div><div style="background:#0f172a;padding:12px 16px;"><div style="padding:8px 0;border-bottom:1px solid #1e293b;"><span style="font-weight:600;color:#f1f5f9;">No hreflang tags</span><div style="color:#94a3b8;font-size:13px;margin-top:4px;">Add if Hindi or regional content is planned.</div></div><div style="padding:8px 0;"><span style="font-weight:600;color:#f1f5f9;">No IndexNow implementation</span><div style="color:#94a3b8;font-size:13px;margin-top:4px;">Instant indexing signal for Bing/Yandex.</div></div></div></div>
+  <div class="section-title">Action Plan</div>
+  <div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;overflow:hidden;margin-bottom:20px;">
+    <div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;"><thead><tr style="background:#020617;"><th style="padding:10px 14px;text-align:left;color:#475569;font-size:12px;">#</th><th style="padding:10px 14px;text-align:left;color:#475569;font-size:12px;">PRIORITY</th><th style="padding:10px 14px;text-align:left;color:#475569;font-size:12px;">ACTION</th><th style="padding:10px 14px;text-align:left;color:#475569;font-size:12px;">EFFORT</th><th style="padding:10px 14px;text-align:left;color:#475569;font-size:12px;">IMPACT</th></tr></thead><tbody>
+    <tr style="border-bottom:1px solid #1e293b;"><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1</td><td style="padding:10px 14px;"><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;">CRITICAL</span></td><td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Whitelist Googlebot, GPTBot, PerplexityBot, Bingbot in Cloudflare WAF</td><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2 hrs</td><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Unblocks all indexing and AI crawling</td></tr>
+    <tr style="border-bottom:1px solid #1e293b;"><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2</td><td style="padding:10px 14px;"><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;">CRITICAL</span></td><td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Make robots.txt publicly accessible</td><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">30 min</td><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Required by Google guidelines</td></tr>
+    <tr style="border-bottom:1px solid #1e293b;"><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">3</td><td style="padding:10px 14px;"><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;">CRITICAL</span></td><td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Add Organization + FinancialService JSON-LD to homepage</td><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2 hrs</td><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Rich results eligibility</td></tr>
+    <tr style="border-bottom:1px solid #1e293b;"><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">4</td><td style="padding:10px 14px;"><span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;">HIGH</span></td><td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Create llms.txt at root domain</td><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1 hr</td><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">AI search visibility</td></tr>
+    <tr style="border-bottom:1px solid #1e293b;"><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">5</td><td style="padding:10px 14px;"><span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;">HIGH</span></td><td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Add AggregateRating schema (4.7 stars, 1583 reviews)</td><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1 hr</td><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Star ratings in SERP</td></tr>
+    <tr style="border-bottom:1px solid #1e293b;"><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">6</td><td style="padding:10px 14px;"><span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;">HIGH</span></td><td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Claim Bing Places + Apple Business Connect</td><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1 hr</td><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">ChatGPT + Copilot data feed</td></tr>
+    <tr style="border-bottom:1px solid #1e293b;"><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">7</td><td style="padding:10px 14px;"><span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;">MEDIUM</span></td><td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Add Last Updated dates to all financial articles</td><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2 hrs</td><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Freshness + trust signals</td></tr>
+    <tr><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">8</td><td style="padding:10px 14px;"><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;">LOW</span></td><td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Create Wikipedia article via AfC process</td><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1 week</td><td style="padding:10px 14px;color:#94a3b8;font-size:13px;">ChatGPT citation in 47.9% of responses</td></tr>
+    </tbody></table></div>
+  </div>
+  <div style="text-align:center;padding:32px 0;color:#334155;font-size:13px;">Generated by claude-seo v1.9.0 &nbsp;&middot;&nbsp; April 18, 2026</div>
+</div>
+<script>
+function downloadHTML(){
+  const blob=new Blob([document.documentElement.outerHTML],{type:'text/html'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='seo-report-gyandhan.html';
+  a.click();
+}
+</script>
+</body>
+</html>
