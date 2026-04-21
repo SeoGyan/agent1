@@ -8,7 +8,7 @@ user-invokable: true
 argument-hint: "[url or generate]"
 license: MIT
 metadata:
-  author: AgriciDaniel
+  author: Rahul Chauhan
   version: "1.9.0"
   category: seo
 ---

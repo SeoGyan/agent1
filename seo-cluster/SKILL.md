@@ -12,7 +12,7 @@ user-invokable: true
 argument-hint: "<seed-keyword or url>"
 license: MIT
 metadata:
-  author: AgriciDaniel
+  author: Rahul Chauhan
   original_author: "Lutfiya Miller (Pro Hub Challenge Winner)"
   version: "1.9.0"
   category: seo
@@ -230,7 +230,7 @@ Test: Does ~/.claude/skills/blog/SKILL.md exist?
    - Key points to cover
    - Competing pages to differentiate from
 3. Write briefs to `cluster-briefs/` directory as individual markdown files
-4. Inform user: "Install [claude-blog](https://github.com/AgriciDaniel/claude-blog)
+4. Inform user: "Install [claude-blog](https://github.com/SeoGyan/agent1)
    to auto-create content. Briefs saved to `cluster-briefs/`."
 
 ---

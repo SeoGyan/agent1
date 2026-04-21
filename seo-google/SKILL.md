@@ -13,7 +13,7 @@ user-invokable: true
 argument-hint: "[command] [url|property]"
 license: MIT
 metadata:
-  author: AgriciDaniel
+  author: Rahul Chauhan
   version: "1.9.0"
   category: seo
 ---

@@ -1,6 +1,6 @@
 # SEO Agent
 
-This repository sets up an AI-powered SEO agent powered by [claude-seo](https://github.com/AgriciDaniel/claude-seo), running inside Claude Code.
+This repository sets up an AI-powered SEO agent powered by [claude-seo](https://github.com/SeoGyan/agent1), running inside Claude Code.
 
 ## What is this?
 
@@ -20,7 +20,7 @@ No SEO experience needed — just give it a URL and it does the work.
 Run this one command in your terminal:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/AgriciDaniel/claude-seo/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/SeoGyan/claude-seo/main/install.sh | bash
 ```
 
 **Requirements:** Python 3.10+ and Git must be installed.
@@ -67,4 +67,4 @@ This runs a full audit using 15 specialist subagents in parallel and gives you a
 
 ## Source
 
-Built on top of [AgriciDaniel/claude-seo](https://github.com/AgriciDaniel/claude-seo) (v1.9.0).
+Built on top of [Rahul Chauhan/claude-seo](https://github.com/SeoGyan/agent1) (v1.9.0).

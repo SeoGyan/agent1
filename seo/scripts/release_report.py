@@ -568,7 +568,7 @@ def _build_title_page(logo_path: str = "") -> str:
     <div class="mc"><div class="big">85</div><div class="small">Security Score</div></div>
   </div>
   <div class="meta">
-    Version 1.9.0 &nbsp;&#183;&nbsp; {date} &nbsp;&#183;&nbsp; github.com/AgriciDaniel/claude-seo
+    Version 1.9.0 &nbsp;&#183;&nbsp; {date} &nbsp;&#183;&nbsp; github.com/SeoGyan/agent1
   </div>
 
   <div style="margin-top:14mm; padding:5mm 6mm; background:#111111; border:1px solid #2D2D2D; border-radius:6px; text-align:left;">
@@ -1025,7 +1025,7 @@ def _build_next_section() -> str:
   <hr class="divider">
   <p style="font-size:8.5pt; color:#888888; text-align:center; margin-top:4mm;">
     Claude SEO is open-source (Agent Skills standard) &nbsp;&#183;&nbsp;
-    github.com/AgriciDaniel/claude-seo &nbsp;&#183;&nbsp;
+    github.com/SeoGyan/agent1 &nbsp;&#183;&nbsp;
     AI Marketing Hub: skool.com/ai-marketing-hub-pro
   </p>
 </div>

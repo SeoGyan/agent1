@@ -6,7 +6,7 @@ argument-hint: "<url>"
 license: MIT
 compatibility: "Free: Common Crawl + verify always available. Optional: Moz API, Bing Webmaster (free signup). Premium: DataForSEO extension."
 metadata:
-  author: AgriciDaniel
+  author: Rahul Chauhan
   version: "1.9.0"
   category: seo
 ---
