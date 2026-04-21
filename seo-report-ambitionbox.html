@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SEO Audit Report — ambitionbox.com</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#020617;color:#e2e8f0;min-height:100vh;}
+  .topbar{background:#0f172a;border-bottom:1px solid #1e293b;padding:14px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;}
+  .logo{font-size:18px;font-weight:800;color:#f1f5f9;letter-spacing:-.3px;}
+  .logo span{color:#3b82f6;}
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:none;text-decoration:none;transition:opacity .2s;}
+  .btn:hover{opacity:.85;}
+  .btn-primary{background:#3b82f6;color:white;}
+  .btn-secondary{background:#1e293b;color:#cbd5e1;border:1px solid #334155;}
+  .btn-group{display:flex;gap:8px;}
+  .hero{background:linear-gradient(135deg,#0f172a 0%,#0c1220 100%);border-bottom:1px solid #1e293b;padding:48px 32px;}
+  .hero-inner{max-width:1100px;margin:0 auto;display:flex;gap:48px;align-items:center;flex-wrap:wrap;}
+  .hero-gauge{text-align:center;flex-shrink:0;}
+  .hero-info{flex:1;min-width:280px;}
+  .hero-domain{font-size:28px;font-weight:800;color:#f1f5f9;margin-bottom:6px;}
+  .hero-meta{color:#64748b;font-size:14px;margin-bottom:16px;}
+  .hero-summary{color:#94a3b8;font-size:15px;line-height:1.6;max-width:600px;}
+  .stat-pills{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+  .pill{background:#1e293b;border:1px solid #334155;border-radius:20px;padding:6px 14px;font-size:13px;color:#94a3b8;}
+  .pill strong{color:#f1f5f9;}
+  .main{max-width:1100px;margin:0 auto;padding:32px;}
+  .section-title{font-size:20px;font-weight:700;color:#f1f5f9;margin:32px 0 16px;padding-bottom:10px;border-bottom:1px solid #1e293b;}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .radar-wrap{background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:20px;}
+  @media print{
+    .topbar .btn-group{display:none;}
+    body{background:white;color:#1e293b;}
+    .topbar,.hero{background:white!important;border-color:#e2e8f0!important;}
+    .hero-domain,.section-title{color:#1e293b!important;}
+  }
+  @media(max-width:700px){
+    .hero-inner{flex-direction:column;}
+    .grid-2{grid-template-columns:1fr;}
+    .topbar{flex-direction:column;gap:12px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">SEO<span>.</span>Report</div>
+  <div class="btn-group">
+    <button class="btn btn-secondary" onclick="downloadHTML()">⬇ Download HTML</button>
+    <button class="btn btn-primary" onclick="window.print()">🖨 Save as PDF</button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-gauge">
+      <svg width="180" height="180" viewBox="0 0 120 120">
+  <circle cx="60" cy="60" r="54" fill="none" stroke="#1e293b" stroke-width="10"/>
+  <circle cx="60" cy="60" r="54" fill="none" stroke="#f97316" stroke-width="10"
+    stroke-dasharray="166.3 173.0"
+    stroke-dashoffset="84.8"
+    stroke-linecap="round" transform="rotate(-90 60 60)"/>
+  <text x="60" y="55" text-anchor="middle" fill="white" font-size="22" font-weight="700">49</text>
+  <text x="60" y="72" text-anchor="middle" fill="#f97316" font-size="9" font-weight="600">POOR</text>
+</svg>
+      <div style="color:#64748b;font-size:12px;margin-top:4px;">Overall SEO Score</div>
+    </div>
+    <div class="hero-info">
+      <div class="hero-domain">ambitionbox.com</div>
+      <div class="hero-meta">Audit Date: April 20, 2026 &nbsp;·&nbsp; Business Type: Publisher / UGC Jobs & Reviews Platform</div>
+      <div class="hero-summary">AmbitionBox holds one of India's largest repositories of workplace data — 30L+ reviews, 1Cr+ salaries across 5L+ companies — yet AI crawlers, Google, and users are all under-served. Three structural failures dominate: (1) WAF-level blocking of all AI crawlers including Googlebot, (2) zero schema markup on the platform's most valuable content (reviews, salaries), and (3) YMYL trust gaps that undermine its core value proposition. Fixing the crawler access and AggregateRating schema alone would unlock the largest near-term SERP gains.</div>
+      <div class="stat-pills">
+        <div class="pill">Issues: <strong style="color:#ef4444;">23</strong></div>
+        <div class="pill">Critical: <strong style="color:#ef4444;">6</strong></div>
+        <div class="pill">Actions: <strong style="color:#3b82f6;">20</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="section-title">📊 Score Breakdown</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px;"><div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;">
+  <div style="font-size:22px;margin-bottom:4px;">📊</div>
+  <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">Technical Seo</div>
+  <div style="font-size:28px;font-weight:800;color:#f59e0b;">61</div>
+  <div style="width:80px;background:#1e293b;border-radius:4px;height:8px;margin-top:6px;">
+  <div style="width:61%;background:#f59e0b;height:8px;border-radius:4px;transition:width .6s;"></div>
+</div>
+  <div style="font-size:11px;color:#f59e0b;margin-top:6px;">Needs Work</div>
+</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;">
+  <div style="font-size:22px;margin-bottom:4px;">📊</div>
+  <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">Content Quality</div>
+  <div style="font-size:28px;font-weight:800;color:#f97316;">44</div>
+  <div style="width:80px;background:#1e293b;border-radius:4px;height:8px;margin-top:6px;">
+  <div style="width:44%;background:#f97316;height:8px;border-radius:4px;transition:width .6s;"></div>
+</div>
+  <div style="font-size:11px;color:#f97316;margin-top:6px;">Poor</div>
+</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;">
+  <div style="font-size:22px;margin-bottom:4px;">📊</div>
+  <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">On-Page Seo</div>
+  <div style="font-size:28px;font-weight:800;color:#f97316;">58</div>
+  <div style="width:80px;background:#1e293b;border-radius:4px;height:8px;margin-top:6px;">
+  <div style="width:58%;background:#f97316;height:8px;border-radius:4px;transition:width .6s;"></div>
+</div>
+  <div style="font-size:11px;color:#f97316;margin-top:6px;">Poor</div>
+</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;">
+  <div style="font-size:22px;margin-bottom:4px;">📊</div>
+  <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">Schema Markup</div>
+  <div style="font-size:28px;font-weight:800;color:#ef4444;">38</div>
+  <div style="width:80px;background:#1e293b;border-radius:4px;height:8px;margin-top:6px;">
+  <div style="width:38%;background:#ef4444;height:8px;border-radius:4px;transition:width .6s;"></div>
+</div>
+  <div style="font-size:11px;color:#ef4444;margin-top:6px;">Critical</div>
+</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;">
+  <div style="font-size:22px;margin-bottom:4px;">📊</div>
+  <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">Performance</div>
+  <div style="font-size:28px;font-weight:800;color:#f97316;">42</div>
+  <div style="width:80px;background:#1e293b;border-radius:4px;height:8px;margin-top:6px;">
+  <div style="width:42%;background:#f97316;height:8px;border-radius:4px;transition:width .6s;"></div>
+</div>
+  <div style="font-size:11px;color:#f97316;margin-top:6px;">Poor</div>
+</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;">
+  <div style="font-size:22px;margin-bottom:4px;">📊</div>
+  <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">Ai Search</div>
+  <div style="font-size:28px;font-weight:800;color:#ef4444;">38</div>
+  <div style="width:80px;background:#1e293b;border-radius:4px;height:8px;margin-top:6px;">
+  <div style="width:38%;background:#ef4444;height:8px;border-radius:4px;transition:width .6s;"></div>
+</div>
+  <div style="font-size:11px;color:#ef4444;margin-top:6px;">Critical</div>
+</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;">
+  <div style="font-size:22px;margin-bottom:4px;">📊</div>
+  <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">Images</div>
+  <div style="font-size:28px;font-weight:800;color:#f97316;">50</div>
+  <div style="width:80px;background:#1e293b;border-radius:4px;height:8px;margin-top:6px;">
+  <div style="width:50%;background:#f97316;height:8px;border-radius:4px;transition:width .6s;"></div>
+</div>
+  <div style="font-size:11px;color:#f97316;margin-top:6px;">Poor</div>
+</div></div>
+
+  <div class="grid-2">
+    <div class="radar-wrap">
+      <div style="font-size:15px;font-weight:700;color:#f1f5f9;margin-bottom:16px;">Radar Overview</div>
+      <canvas id="radarChart" style="max-height:300px;"></canvas>
+<script>
+new Chart(document.getElementById('radarChart'),{
+  type:'radar',
+  data:{
+    labels:["Technical Seo", "Content Quality", "On-Page Seo", "Schema Markup", "Performance", "Ai Search", "Images"],
+    datasets:[{
+      label:'SEO Score',
+      data:[61, 44, 58, 38, 42, 38, 50],
+      backgroundColor:'rgba(59,130,246,.15)',
+      borderColor:'#3b82f6',
+      pointBackgroundColor:'#3b82f6',
+      pointRadius:4,
+      borderWidth:2
+    }]
+  },
+  options:{
+    responsive:true,
+    scales:{r:{
+      min:0,max:100,
+      ticks:{color:'#475569',font:{size:10},backdropColor:'transparent',stepSize:25},
+      grid:{color:'#1e293b'},
+      pointLabels:{color:'#94a3b8',font:{size:11}}
+    }},
+    plugins:{legend:{display:false}}
+  }
+});
+</script>
+    </div>
+    <div>
+      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:20px;margin-bottom:20px;"><div style="font-size:16px;font-weight:700;color:#f1f5f9;margin-bottom:12px;">⚡ Quick Wins</div><ul style="list-style:none;padding:0;margin:0;"><li style="padding:6px 0;border-bottom:1px solid #1e293b;color:#cbd5e1;font-size:14px;">⚡ Whitelist GPTBot, ClaudeBot, PerplexityBot in Cloudflare WAF (2 hrs)</li><li style="padding:6px 0;border-bottom:1px solid #1e293b;color:#cbd5e1;font-size:14px;">⚡ Fix robots.txt returning 403 — make it publicly accessible (30 min)</li><li style="padding:6px 0;border-bottom:1px solid #1e293b;color:#cbd5e1;font-size:14px;">⚡ Create llms.txt at root domain (1 hr)</li><li style="padding:6px 0;border-bottom:1px solid #1e293b;color:#cbd5e1;font-size:14px;">⚡ Deploy AggregateRating schema on all company profile pages (template change)</li><li style="padding:6px 0;border-bottom:1px solid #1e293b;color:#cbd5e1;font-size:14px;">⚡ Add baseSalary + validThrough to all JobPosting schema blocks (1 hr)</li><li style="padding:6px 0;border-bottom:1px solid #1e293b;color:#cbd5e1;font-size:14px;">⚡ Publish Review Integrity Standards page — fixes YMYL trust gap (1 day)</li></ul></div>
+    </div>
+  </div>
+
+  <div class="section-title">🚨 Issues Found</div>
+  <div style="margin-bottom:20px;border-radius:10px;overflow:hidden;border:1px solid #fca5a5;">
+  <div style="background:#ef4444;padding:8px 16px;display:flex;align-items:center;gap:8px;">
+    <span style="color:white;font-weight:700;font-size:13px;letter-spacing:.5px;">CRITICAL</span>
+    <span style="background:rgba(255,255,255,.25);color:white;border-radius:10px;padding:1px 8px;font-size:12px;">6</span>
+  </div>
+  <div style="background:#fef2f2;"><div style="padding:12px 16px;border-bottom:1px solid #fca5a5;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">WAF blocks all AI crawlers (GPTBot, ClaudeBot, PerplexityBot)</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">2 hrs</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Cloudflare or equivalent WAF returns 403 to all non-browser user agents. AI search engines cannot index any content, eliminating AmbitionBox from ChatGPT, Perplexity, and Claude citations entirely.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fca5a5;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">robots.txt returns 403 — breaks all crawler signals</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">30 min</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Google requires robots.txt to be publicly readable. A 403 creates crawler uncertainty and may cause Googlebot to fall back to default crawl behaviour, wasting crawl budget at 10M+ page scale.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fca5a5;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">No llms.txt — AI crawlers have no content guidance</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1 hr</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">No llms.txt file exists. ChatGPT, Perplexity, and Claude cannot prioritize high-value salary and review pages. This is the cheapest high-leverage GEO fix available.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fca5a5;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">AggregateRating schema completely absent</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1–2 weeks (template)</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">30L+ employee reviews with star ratings exist on-platform but zero Review/AggregateRating structured data is deployed. Star ratings cannot appear in SERPs. This is the single highest-ROI schema action across the entire platform.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fca5a5;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">No Wikipedia article for AmbitionBox</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">2–4 weeks</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">AmbitionBox has no standalone English Wikipedia article. All major AI systems (ChatGPT, Gemini, Perplexity, Claude) use Wikipedia as the primary entity disambiguation layer. Without it, AI answers about Indian salaries default to Glassdoor.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fca5a5;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">Thin content at scale — 100K+ low-review company pages indexed</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1 month (audit + noindex)</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Hundreds of thousands of company pages with fewer than 3–5 reviews are indexed, consuming crawl budget and triggering Helpful Content System thin-page penalties. Pages below threshold must be noindexed until they meet quality criteria.</div>
+</div></div>
+</div><div style="margin-bottom:20px;border-radius:10px;overflow:hidden;border:1px solid #fdba74;">
+  <div style="background:#f97316;padding:8px 16px;display:flex;align-items:center;gap:8px;">
+    <span style="color:white;font-weight:700;font-size:13px;letter-spacing:.5px;">HIGH</span>
+    <span style="background:rgba(255,255,255,.25);color:white;border-radius:10px;padding:1px 8px;font-size:12px;">8</span>
+  </div>
+  <div style="background:#fff7ed;"><div style="padding:12px 16px;border-bottom:1px solid #fdba74;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">JobPosting schema missing baseSalary + validThrough</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1 hr</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">JobPosting blocks exist but omit baseSalary (salary display in Google Jobs) and validThrough (expired listings suppress all JobPosting rich results domain-wide if stale count is high).</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fdba74;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">Structural trust conflict: paid employer branding vs review integrity</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1 day</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">AmbitionBox sells employer branding subscriptions with no public editorial independence policy. For a YMYL salary/career platform, this is a direct Quality Rater flag. A Review Integrity Standards page is required.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fdba74;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">No editorial authorship on salary/career content (YMYL)</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1 week</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Salary summary pages and career-advice articles carry no byline, no author credential, no methodology disclosure. Anonymous YMYL content on financial topics is a direct penalty signal under the December 2025 core update.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fdba74;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">Organization schema incomplete — missing sameAs, parentOrg</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">2 hrs</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Organization block likely lacks foundingDate, parentOrganization (Info Edge), and sameAs social links (LinkedIn, Wikipedia, Crunchbase). These feed Google's Knowledge Panel and AI entity disambiguation.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fdba74;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">Article/BlogPosting schema absent on all blog content</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">Low (CMS template)</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Career-advice articles and salary guides carry no Article schema, losing author, datePublished, publisher properties and all article rich result eligibility.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fdba74;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">No IndexNow implementation for 10M+ pages</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1–2 days</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">New reviews, salaries, and job listings are added 24/7 but Bing, Yandex, and Naver discovery relies on crawl scheduling. IndexNow would provide instant notification of all new/updated content.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fdba74;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">'Best companies to work for India' SERP uncontested</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">2–3 weeks</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">AmbitionBox runs the ABECA awards — India's most comprehensive employer ranking — yet ranks #7+ for this query behind Great Place to Work, Glassdoor, and Statista. A dedicated SERP-optimised landing page would capture this high-volume cluster.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fdba74;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">No employer-facing entry point in primary navigation</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1 sprint</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">HR and employer brand professionals receive the same job-seeker homepage with no visible 'For Employers' pathway. Persona score: 34/100 — the lowest of all user segments.</div>
+</div></div>
+</div><div style="margin-bottom:20px;border-radius:10px;overflow:hidden;border:1px solid #fcd34d;">
+  <div style="background:#f59e0b;padding:8px 16px;display:flex;align-items:center;gap:8px;">
+    <span style="color:white;font-weight:700;font-size:13px;letter-spacing:.5px;">MEDIUM</span>
+    <span style="background:rgba(255,255,255,.25);color:white;border-radius:10px;padding:1px 8px;font-size:12px;">6</span>
+  </div>
+  <div style="background:#fffbeb;"><div style="padding:12px 16px;border-bottom:1px solid #fcd34d;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">INP estimated 300–600ms — Poor</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">2–3 months (eng)</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Dense React event handlers on review cards, filter dropdowns re-rendering large lists, and salary comparison sliders cause main-thread blocking. Use startTransition for filter interactions and react-virtual for long lists.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fcd34d;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">LCP estimated 3.5–5s — Poor</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">2–4 weeks</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Company logo likely fetched without fetchpriority=high, LCP element inside lazy-loaded React component. Add preload link for LCP image and implement React Streaming SSR.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fcd34d;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">Salary data not exposed as prose — poor AI citability</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">2–3 weeks</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Salary ranges are rendered as React widgets, not extractable prose. AI Overviews cannot cite data trapped inside JavaScript components. Add a 134–167 word auto-generated prose paragraph above the fold on every salary page.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fcd34d;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">Duplicate content from URL parameter proliferation</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">2–3 weeks</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Review sort/filter parameters (?sort=recent, ?rating=4) generate near-duplicate URLs. Canonical tags must cover all variants pointing to the clean base URL.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fcd34d;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">Meta description not action-oriented, missing India modifier</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1 sprint</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Current meta is stat-heavy but lacks CTA verb and geographic clarity. Estimated CTR loss 0.8–1.5% vs. optimised variant.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fcd34d;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">H2 hierarchy is catalogue labels, not keyword-intent phrases</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1 sprint</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">'Explore Salaries' and 'Featured Companies' carry zero SEO signal. Replace with intent-mapped H2s: 'Compare IT Salaries in India', 'Top Rated Companies This Month'.</div>
+</div></div>
+</div><div style="margin-bottom:20px;border-radius:10px;overflow:hidden;border:1px solid #93c5fd;">
+  <div style="background:#3b82f6;padding:8px 16px;display:flex;align-items:center;gap:8px;">
+    <span style="color:white;font-weight:700;font-size:13px;letter-spacing:.5px;">LOW</span>
+    <span style="background:rgba(255,255,255,.25);color:white;border-radius:10px;padding:1px 8px;font-size:12px;">3</span>
+  </div>
+  <div style="background:#eff6ff;"><div style="padding:12px 16px;border-bottom:1px solid #93c5fd;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">No Hindi / regional language content or hreflang</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">Planning</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Google AI Overviews for Hindi salary queries are completely uncontested. No competitor has strong Hindi structured data. AmbitionBox's India-first positioning makes bilingual content a differentiated opportunity.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #93c5fd;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">CLS estimated 0.15–0.25 — Needs Improvement</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">2–3 weeks</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Company logos loaded without explicit width/height attributes; ad slots injected dynamically; cookie consent banner inserts into document flow. Reserve space for all dynamic elements.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #93c5fd;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">Open Graph tags incomplete on company/salary pages</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1 sprint</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">When salary data or reviews are shared on WhatsApp or LinkedIn, incomplete OG tags make previews appear generic. Each salary page needs a custom og:description with the key statistic.</div>
+</div></div>
+</div>
+
+  <div class="section-title">📋 Detailed Analysis</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:20px;margin-bottom:20px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+    <span style="font-size:16px;font-weight:700;color:#f1f5f9;">⚙️ Technical SEO</span>
+    <span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;border-radius:20px;padding:3px 12px;font-size:13px;font-weight:600;">61/100 · Needs Work</span>
+  </div>
+  <div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">robots.txt returns 403 — breaks Googlebot crawl budget at 10M+ page scale</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Thin content at scale: 100K+ company pages with <3 reviews consuming crawl budget</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Duplicate URL proliferation: sort/filter params create millions of near-duplicate pages</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">IndexNow not implemented — Bing/Yandex/Naver content freshness lags days to weeks</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Expired job pages likely returning 200 (soft 404) — should return 410 (Gone)</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">JavaScript bundle size and CSR-heavy architecture delays indexing of new reviews</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Sitemap fragmentation risk at 10M+ pages — lastmod accuracy and freshness unknown</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#6b7280;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">HTTPS correctly implemented, www/non-www consolidated to single canonical</span>
+</div></div>
+</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:20px;margin-bottom:20px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+    <span style="font-size:16px;font-weight:700;color:#f1f5f9;">📝 Content Quality (E-E-A-T)</span>
+    <span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:20px;padding:3px 12px;font-size:13px;font-weight:600;">44/100 · Poor</span>
+  </div>
+  <div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Structural trust conflict: paid employer branding product vs. review integrity — no editorial independence policy exists</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">No editorial authorship on salary/career-advice pages — anonymous YMYL content penalised under Dec 2025 QRG</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">No review verification methodology published — Glassdoor-style email-domain verification absent</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Salary data presented without sample size, recency, or confidence intervals — YMYL accuracy failure</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">No 'Last Updated' timestamps on review aggregate summaries — freshness signals missing</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Interview Q&A pages are pure unvalidated UGC — no expert editorial layer</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#6b7280;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Active blog covering career advice, lender-specific salary data, and ABECA awards</span>
+</div></div>
+</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:20px;margin-bottom:20px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+    <span style="font-size:16px;font-weight:700;color:#f1f5f9;">🔗 Schema Markup</span>
+    <span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;border-radius:20px;padding:3px 12px;font-size:13px;font-weight:600;">38/100 · Critical</span>
+  </div>
+  <div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">AggregateRating completely absent — 30L reviews with star ratings invisible to Google rich results</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">JobPosting schema missing baseSalary and validThrough — salary display in Google Jobs lost</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Organization schema incomplete — missing sameAs (Wikipedia, LinkedIn), parentOrganization (Info Edge)</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Article/BlogPosting schema absent on all editorial and career-advice content</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">BreadcrumbList inconsistently deployed across page types</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">OccupationAggregationByEmployer + MonetaryAmountDistribution absent on salary pages</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#6b7280;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">JSON-LD format used (preferred), WebSite SearchAction likely implemented</span>
+</div></div>
+</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:20px;margin-bottom:20px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+    <span style="font-size:16px;font-weight:700;color:#f1f5f9;">🤖 AI Search (GEO)</span>
+    <span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;border-radius:20px;padding:3px 12px;font-size:13px;font-weight:600;">38/100 · Critical</span>
+  </div>
+  <div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">WAF blocks GPTBot, ClaudeBot, PerplexityBot — platform invisible to all major AI search engines</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">No llms.txt — AI crawlers have zero content guidance on 10M+ pages</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">No Wikipedia article — AI systems default to Glassdoor for Indian salary queries</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Salary data trapped in JS widgets — not extractable by AI Overviews as prose citations</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">No annual India Salary Report as citable reference asset (Glassdoor publishes this annually)</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Reddit/Quora AmbitionBox mentions exist but include review authenticity skepticism — reputational risk</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#6b7280;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">ABECA awards generate Indian media citations used by Perplexity and AI Overviews</span>
+</div></div>
+</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:20px;margin-bottom:20px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+    <span style="font-size:16px;font-weight:700;color:#f1f5f9;">🏷️ On-Page SEO & SXO</span>
+    <span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:20px;padding:3px 12px;font-size:13px;font-weight:600;">55/100 · Poor</span>
+  </div>
+  <div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">'Best companies to work for India' SERP: AmbitionBox ranks #7+ despite owning the most comprehensive dataset</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Meta description not action-oriented and missing India geographic modifier — estimated 1–2% CTR loss</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">H2 hierarchy uses catalogue labels ('Explore Salaries') not keyword-intent phrases</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Employer Brand Manager persona scores 34/100 — no 'For Employers' nav entry point</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Keyword cannibalization between homepage and /companies for 'company reviews India'</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Aggressive app-download CTA before value delivery increases bounce for desktop SERP traffic</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#6b7280;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">6.71M monthly visits, #6 global rank in Jobs category (SimilarWeb Jan 2026)</span>
+</div></div>
+</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:20px;margin-bottom:20px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+    <span style="font-size:16px;font-weight:700;color:#f1f5f9;">⚡ Performance (Core Web Vitals)</span>
+    <span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:20px;padding:3px 12px;font-size:13px;font-weight:600;">42/100 · Poor</span>
+  </div>
+  <div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">LCP estimated 3.5–5s (Poor) — company logos loaded without fetchpriority, LCP element in lazy-loaded React component</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">INP estimated 300–600ms (Poor) — dense React event handlers on review cards, filter re-renders unoptimised</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">CLS estimated 0.15–0.25 (Needs Improvement) — logos without dimensions, dynamic ad slot injection</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">CSR-heavy architecture: new review content may not be indexed by Google for 1–3 weeks</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Third-party script bloat (GTM, analytics, chat, ad networks) competes for main-thread time</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">TTFB elevated for non-NCR users — edge caching of page shells not confirmed</span>
+</div></div>
+</div>
+
+  <div class="section-title">🎯 Action Plan</div>
+  <div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;overflow:hidden;margin-bottom:20px;">
+  <div style="padding:16px 20px;border-bottom:1px solid #1e293b;">
+    <span style="font-size:16px;font-weight:700;color:#f1f5f9;">🎯 Prioritized Action Plan</span>
+  </div>
+  <div style="overflow-x:auto;">
+  <table style="width:100%;border-collapse:collapse;">
+    <thead>
+      <tr style="background:#020617;">
+        <th style="padding:10px 14px;text-align:left;color:#475569;font-size:12px;letter-spacing:.5px;">#</th>
+        <th style="padding:10px 14px;text-align:left;color:#475569;font-size:12px;letter-spacing:.5px;">PRIORITY</th>
+        <th style="padding:10px 14px;text-align:left;color:#475569;font-size:12px;letter-spacing:.5px;">ACTION</th>
+        <th style="padding:10px 14px;text-align:left;color:#475569;font-size:12px;letter-spacing:.5px;">EFFORT</th>
+        <th style="padding:10px 14px;text-align:left;color:#475569;font-size:12px;letter-spacing:.5px;">IMPACT</th>
+      </tr>
+    </thead>
+    <tbody><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1</td>
+  <td style="padding:10px 14px;"><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">critical</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Whitelist GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot in Cloudflare WAF</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2 hrs</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Enables all AI search indexing — prerequisite for every other GEO improvement</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2</td>
+  <td style="padding:10px 14px;"><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">critical</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Fix robots.txt to return HTTP 200 and be publicly readable</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">30 min</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Restores Googlebot crawl signals at 10M+ page scale</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">3</td>
+  <td style="padding:10px 14px;"><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">critical</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Publish llms.txt mapping salary, review, and interview URL namespaces</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1 hr</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Direct improvement in ChatGPT, Perplexity, and Claude citation rates</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">4</td>
+  <td style="padding:10px 14px;"><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">critical</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Deploy AggregateRating schema across all company profile pages</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1–2 weeks</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Star ratings in SERPs for millions of Indian employer queries — highest ROI action on platform</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">5</td>
+  <td style="padding:10px 14px;"><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">critical</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Commission Wikipedia article via AfC process</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2–4 weeks</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Establishes AI entity disambiguation — closes the biggest AI citation gap vs Glassdoor</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">6</td>
+  <td style="padding:10px 14px;"><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">critical</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">noindex company pages with fewer than 3 reviews</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1 month</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Crawl budget recovery + Helpful Content quality signal improvement at scale</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">7</td>
+  <td style="padding:10px 14px;"><span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">high</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Add baseSalary (MonetaryAmount) + validThrough to all JobPosting schema</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1 hr</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Enhanced salary display in Google Jobs; prevents stale-listing suppression</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">8</td>
+  <td style="padding:10px 14px;"><span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">high</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Publish Review Integrity Standards page (editorial independence, verification method)</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1 day</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Addresses YMYL trust conflict — highest-leverage trust improvement available</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">9</td>
+  <td style="padding:10px 14px;"><span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">high</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Assign named editorial ownership to salary pages + create methodology page</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1 week</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">E-E-A-T for YMYL; required under Dec 2025 QRG anonymous-authorship standards</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">10</td>
+  <td style="padding:10px 14px;"><span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">high</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Complete Organization schema: add sameAs (LinkedIn, Wikipedia), parentOrganization (Info Edge)</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2 hrs</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Strengthens Knowledge Panel and entity disambiguation for brand queries</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">11</td>
+  <td style="padding:10px 14px;"><span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">high</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Deploy Article schema across all blog and career-advice pages</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Low (CMS template)</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Article rich result eligibility; improved AI citation signals for editorial content</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">12</td>
+  <td style="padding:10px 14px;"><span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">high</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Implement IndexNow for real-time Bing/Yandex/Naver notification</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1–2 days</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Freshness for 10M+ pages across non-Google search engines</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">13</td>
+  <td style="padding:10px 14px;"><span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">high</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Build 'Best Companies to Work For India 2026' SERP landing page</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2–3 weeks</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Captures high-volume query cluster AmbitionBox has data to own but ranks #7+ for</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">14</td>
+  <td style="padding:10px 14px;"><span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">high</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Add 'For Employers' to primary navigation + create /employers landing page</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1 sprint</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Fixes employer persona (34/100); opens employer branding SEO + revenue channel</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">15</td>
+  <td style="padding:10px 14px;"><span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">medium</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Add prose citation blocks (134–167 words) to all salary pages</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2–3 weeks</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">AI Overviews can now cite AmbitionBox salary data — currently trapped in JS widgets</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">16</td>
+  <td style="padding:10px 14px;"><span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">medium</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Fix INP: use startTransition for filters, react-virtual for review lists</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2–3 months</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">INP from Poor (300–600ms) to Needs Improvement (<200ms target)</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">17</td>
+  <td style="padding:10px 14px;"><span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">medium</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Fix LCP: preload LCP image, implement React Streaming SSR</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2–4 weeks</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">LCP from Poor (3.5–5s) to Needs Improvement (<2.5s target)</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">18</td>
+  <td style="padding:10px 14px;"><span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">medium</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Implement canonical tags for all parameter/sort/filter URL variants</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2–3 weeks</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Eliminates duplicate content at scale across review and salary pages</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">19</td>
+  <td style="padding:10px 14px;"><span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">medium</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Rewrite meta description and H2s with intent-mapped keywords + India modifier</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1 sprint</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Estimated 1–2% CTR improvement; stronger topical signal to Google</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">20</td>
+  <td style="padding:10px 14px;"><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">low</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Develop Hindi-language salary summary content with hreflang signals</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Planning</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Uncontested Google AI Overview space for Hindi salary queries in India</td>
+</tr></tbody>
+  </table>
+  </div>
+</div>
+
+  <div style="text-align:center;padding:32px 0;color:#334155;font-size:13px;">
+    Generated by claude-seo v1.9.0 &nbsp;·&nbsp; April 20, 2026
+  </div>
+
+</div>
+
+<script>
+function downloadHTML(){
+  const blob = new Blob([document.documentElement.outerHTML],{type:'text/html'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'seo-report-ambitionbox-com.html';
+  a.click();
+}
+</script>
+
+</body>
+</html>
