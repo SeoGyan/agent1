@@ -59,10 +59,10 @@
       <svg width="180" height="180" viewBox="0 0 120 120">
   <circle cx="60" cy="60" r="54" fill="none" stroke="#1e293b" stroke-width="10"/>
   <circle cx="60" cy="60" r="54" fill="none" stroke="#f97316" stroke-width="10"
-    stroke-dasharray="166.3 173.0"
+    stroke-dasharray="169.6 169.6"
     stroke-dashoffset="84.8"
     stroke-linecap="round" transform="rotate(-90 60 60)"/>
-  <text x="60" y="55" text-anchor="middle" fill="white" font-size="22" font-weight="700">49</text>
+  <text x="60" y="55" text-anchor="middle" fill="white" font-size="22" font-weight="700">50</text>
   <text x="60" y="72" text-anchor="middle" fill="#f97316" font-size="9" font-weight="600">POOR</text>
 </svg>
       <div style="color:#64748b;font-size:12px;margin-top:4px;">Overall SEO Score</div>
@@ -70,11 +70,11 @@
     <div class="hero-info">
       <div class="hero-domain">ambitionbox.com</div>
       <div class="hero-meta">Audit Date: April 20, 2026 &nbsp;·&nbsp; Business Type: Publisher / UGC Jobs & Reviews Platform</div>
-      <div class="hero-summary">AmbitionBox holds one of India's largest repositories of workplace data — 30L+ reviews, 1Cr+ salaries across 5L+ companies — yet AI crawlers, Google, and users are all under-served. Three structural failures dominate: (1) WAF-level blocking of all AI crawlers including Googlebot, (2) zero schema markup on the platform's most valuable content (reviews, salaries), and (3) YMYL trust gaps that undermine its core value proposition. Fixing the crawler access and AggregateRating schema alone would unlock the largest near-term SERP gains.</div>
+      <div class="hero-summary">AmbitionBox passes Google's Core Web Vitals assessment for search ranking (CrUX field data: LCP 1,813ms Good, INP 161ms Good, CLS 0.02 Good). However, PSI lab scores of 39/100 mobile reveal 703 KiB unused JavaScript and 12.5s of main-thread work that degrades experience on the low-end Android devices dominant in India. Combined with complete absence of AI crawler access, AggregateRating schema, and a Wikipedia entity, the platform is significantly underperforming its data assets.</div>
       <div class="stat-pills">
         <div class="pill">Issues: <strong style="color:#ef4444;">23</strong></div>
         <div class="pill">Critical: <strong style="color:#ef4444;">6</strong></div>
-        <div class="pill">Actions: <strong style="color:#3b82f6;">20</strong></div>
+        <div class="pill">Actions: <strong style="color:#3b82f6;">22</strong></div>
       </div>
     </div>
   </div>
@@ -118,9 +118,9 @@
 </div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;">
   <div style="font-size:22px;margin-bottom:4px;">📊</div>
   <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">Performance</div>
-  <div style="font-size:28px;font-weight:800;color:#f97316;">42</div>
+  <div style="font-size:28px;font-weight:800;color:#f97316;">48</div>
   <div style="width:80px;background:#1e293b;border-radius:4px;height:8px;margin-top:6px;">
-  <div style="width:42%;background:#f97316;height:8px;border-radius:4px;transition:width .6s;"></div>
+  <div style="width:48%;background:#f97316;height:8px;border-radius:4px;transition:width .6s;"></div>
 </div>
   <div style="font-size:11px;color:#f97316;margin-top:6px;">Poor</div>
 </div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;">
@@ -152,7 +152,7 @@ new Chart(document.getElementById('radarChart'),{
     labels:["Technical Seo", "Content Quality", "On-Page Seo", "Schema Markup", "Performance", "Ai Search", "Images"],
     datasets:[{
       label:'SEO Score',
-      data:[61, 44, 58, 38, 42, 38, 50],
+      data:[61, 44, 58, 38, 48, 38, 50],
       backgroundColor:'rgba(59,130,246,.15)',
       borderColor:'#3b82f6',
       pointBackgroundColor:'#3b82f6',
@@ -425,20 +425,24 @@ new Chart(document.getElementById('radarChart'),{
 </div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:20px;margin-bottom:20px;">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
     <span style="font-size:16px;font-weight:700;color:#f1f5f9;">⚡ Performance (Core Web Vitals)</span>
-    <span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:20px;padding:3px 12px;font-size:13px;font-weight:600;">42/100 · Poor</span>
+    <span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:20px;padding:3px 12px;font-size:13px;font-weight:600;">48/100 · Poor</span>
   </div>
   <div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
-  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">LCP estimated 3.5–5s (Poor) — company logos loaded without fetchpriority, LCP element in lazy-loaded React component</span>
+  <span style="width:8px;height:8px;border-radius:50%;background:#6b7280;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">CrUX field data (real users, p75): LCP 1,813ms ✓ Good | INP 161ms ✓ Good | CLS 0.02 ✓ Good | FCP 1,749ms ✓ Good — site PASSES Core Web Vitals assessment for search ranking</span>
 </div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
-  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">INP estimated 300–600ms (Poor) — dense React event handlers on review cards, filter re-renders unoptimised</span>
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">PSI lab mobile score: 39/100 — LCP 5.1s (Poor), TBT 4,460ms (Poor), TTI 22.9s (Poor) on simulated mid-range Android device</span>
 </div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
-  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">CLS estimated 0.15–0.25 (Needs Improvement) — logos without dimensions, dynamic ad slot injection</span>
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">703 KiB of unused JavaScript being sent — largest single performance opportunity. Tree-shaking + code-splitting required.</span>
 </div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
-  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">CSR-heavy architecture: new review content may not be indexed by Google for 1–3 weeks</span>
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Main-thread work: 12.5s total, JS execution 7.2s — primary cause of poor interactivity on low-end Indian Android devices</span>
 </div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
-  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Third-party script bloat (GTM, analytics, chat, ad networks) competes for main-thread time</span>
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">PSI desktop score: 56/100 — TBT 3,530ms still Poor despite fast LCP (1.4s Good) on desktop</span>
 </div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
-  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">TTFB elevated for non-NCR users — edge caching of page shells not confirmed</span>
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">392 KiB of static assets served with short/missing Cache-Control headers — repeat visitors re-download unnecessarily</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">43 KiB unused CSS blocking paint — PurgeCSS or critical-CSS extraction needed</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">JavaScript not minified in production build — 10 KiB savings from enabling Terser/esbuild</span>
 </div></div>
 </div>
 
@@ -544,36 +548,48 @@ new Chart(document.getElementById('radarChart'),{
   <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Fixes employer persona (34/100); opens employer branding SEO + revenue channel</td>
 </tr><tr style="border-bottom:1px solid #1e293b;">
   <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">15</td>
+  <td style="padding:10px 14px;"><span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">high</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Eliminate 703 KiB unused JavaScript via tree-shaking and route-based code splitting</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2–4 weeks</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Reduces mobile TBT from 4,460ms → target <200ms; TTI from 22.9s → <5s on mid-range Android</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">16</td>
+  <td style="padding:10px 14px;"><span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">high</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Set long-lived Cache-Control headers (max-age=31536000, immutable) for hashed static assets</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1 day</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Eliminates 392 KiB of redundant repeat-visit downloads</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">17</td>
+  <td style="padding:10px 14px;"><span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">medium</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Extract critical CSS and defer non-critical stylesheets (PurgeCSS)</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1–2 weeks</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Removes 43 KiB CSS blocking paint; improves FCP on mobile</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">18</td>
   <td style="padding:10px 14px;"><span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">medium</span></td>
   <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Add prose citation blocks (134–167 words) to all salary pages</td>
   <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2–3 weeks</td>
   <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">AI Overviews can now cite AmbitionBox salary data — currently trapped in JS widgets</td>
 </tr><tr style="border-bottom:1px solid #1e293b;">
-  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">16</td>
-  <td style="padding:10px 14px;"><span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">medium</span></td>
-  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Fix INP: use startTransition for filters, react-virtual for review lists</td>
-  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2–3 months</td>
-  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">INP from Poor (300–600ms) to Needs Improvement (<200ms target)</td>
-</tr><tr style="border-bottom:1px solid #1e293b;">
-  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">17</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">19</td>
   <td style="padding:10px 14px;"><span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">medium</span></td>
   <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Fix LCP: preload LCP image, implement React Streaming SSR</td>
   <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2–4 weeks</td>
   <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">LCP from Poor (3.5–5s) to Needs Improvement (<2.5s target)</td>
 </tr><tr style="border-bottom:1px solid #1e293b;">
-  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">18</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">20</td>
   <td style="padding:10px 14px;"><span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">medium</span></td>
   <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Implement canonical tags for all parameter/sort/filter URL variants</td>
   <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2–3 weeks</td>
   <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Eliminates duplicate content at scale across review and salary pages</td>
 </tr><tr style="border-bottom:1px solid #1e293b;">
-  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">19</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">21</td>
   <td style="padding:10px 14px;"><span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">medium</span></td>
   <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Rewrite meta description and H2s with intent-mapped keywords + India modifier</td>
   <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1 sprint</td>
   <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Estimated 1–2% CTR improvement; stronger topical signal to Google</td>
 </tr><tr style="border-bottom:1px solid #1e293b;">
-  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">20</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">22</td>
   <td style="padding:10px 14px;"><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">low</span></td>
   <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Develop Hindi-language salary summary content with hreflang signals</td>
   <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Planning</td>
