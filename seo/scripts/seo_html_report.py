@@ -92,16 +92,42 @@ def issues_html(issues_list, priority):
     border= priority_border(priority)
     label = priority.upper()
     rows  = ""
-    for item in issues_list:
-        title  = item.get("title","Issue")
-        detail = item.get("detail","")
-        effort = item.get("effort","")
+    for idx, item in enumerate(issues_list):
+        title    = item.get("title","Issue")
+        detail   = item.get("detail","")
+        effort   = item.get("effort","")
+        solution = item.get("solution", {})
         effort_tag = f'<span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">{effort}</span>' if effort else ""
-        rows += f"""<div style="padding:12px 16px;border-bottom:1px solid {border};last-child:border-none;">
+
+        sol_html = ""
+        if solution:
+            steps   = solution.get("steps", [])
+            code    = solution.get("code", "")
+            owner   = solution.get("owner", "")
+            outcome = solution.get("expected_outcome", "")
+            sol_id  = f"sol_{priority}_{idx}"
+
+            steps_html   = "".join(f'<li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">{s}</li>' for s in steps)
+            code_html    = f'<pre style="background:#020617;border:1px solid #334155;border-radius:6px;padding:14px;font-size:12px;color:#7dd3fc;overflow-x:auto;margin-top:12px;white-space:pre-wrap;word-break:break-word;font-family:monospace;">{code}</pre>' if code else ""
+            owner_html   = f'<span style="font-size:11px;background:#1e3a5f;color:#60a5fa;padding:3px 10px;border-radius:10px;margin-top:10px;display:inline-block;">🧑‍💻 Owner: {owner}</span>' if owner else ""
+            outcome_html = f'<div style="margin-top:10px;padding:10px 12px;background:#052e16;border-left:3px solid #22c55e;border-radius:0 6px 6px 0;color:#86efac;font-size:12px;line-height:1.5;">✓ Expected outcome: {outcome}</div>' if outcome else ""
+
+            sol_html = f"""<div style="margin-top:10px;">
+  <button onclick="toggleSol('{sol_id}')" id="btn_{sol_id}" style="background:none;border:1px solid #334155;color:#3b82f6;font-size:12px;font-weight:600;padding:5px 14px;border-radius:6px;cursor:pointer;transition:all .2s;">💡 View Solution ›</button>
+  <div id="{sol_id}" style="display:none;margin-top:10px;background:#0c1628;border:1px solid #1e3a8a;border-radius:10px;padding:16px;">
+    {'<ol style="padding-left:20px;margin:0;display:flex;flex-direction:column;gap:2px;">'+steps_html+'</ol>' if steps_html else ''}
+    {code_html}
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">{owner_html}</div>
+    {outcome_html}
+  </div>
+</div>"""
+
+        rows += f"""<div style="padding:14px 16px;border-bottom:1px solid {border};">
   <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
     <span style="font-weight:600;color:#f1f5f9;">{title}</span>{effort_tag}
   </div>
-  {'<div style="color:#94a3b8;font-size:13px;margin-top:4px;">'+detail+'</div>' if detail else ''}
+  {'<div style="color:#94a3b8;font-size:13px;margin-top:5px;line-height:1.5;">'+detail+'</div>' if detail else ''}
+  {sol_html}
 </div>"""
     return f"""<div style="margin-bottom:20px;border-radius:10px;overflow:hidden;border:1px solid {border};">
   <div style="background:{color};padding:8px 16px;display:flex;align-items:center;gap:8px;">
@@ -371,6 +397,15 @@ function downloadHTML(){{
   a.download = 'seo-report-{domain.replace(".", "-")}.html';
   a.click();
 }}
+function toggleSol(id){{
+  const body = document.getElementById(id);
+  const btn  = document.getElementById('btn_' + id);
+  const open = body.style.display !== 'none';
+  body.style.display = open ? 'none' : 'block';
+  btn.innerHTML  = open ? '💡 View Solution ›' : '💡 Hide Solution ‹';
+  btn.style.color       = open ? '#3b82f6' : '#94a3b8';
+  btn.style.borderColor = open ? '#334155' : '#475569';
+}}
 </script>
 
 </body>
@@ -395,24 +430,179 @@ def demo_data(domain="example.com"):
         },
         "issues": {
             "critical": [
-                {"title": "All crawlers blocked (HTTP 403)", "detail": "Googlebot, GPTBot, and Bingbot all receive 403. Whitelist verified bots in Cloudflare WAF.", "effort": "2 hrs"},
-                {"title": "robots.txt returns 403", "detail": "Google requires robots.txt to be publicly readable.", "effort": "30 min"},
-                {"title": "No schema markup on any page", "detail": "Zero JSON-LD detected. No rich result eligibility.", "effort": "2 hrs"},
+                {
+                    "title": "All crawlers blocked (HTTP 403)", "detail": "Googlebot, GPTBot, and Bingbot all receive 403. Whitelist verified bots in Cloudflare WAF.", "effort": "2 hrs",
+                    "solution": {
+                        "steps": [
+                            "Log in to Cloudflare Dashboard → Security → WAF → Firewall Rules",
+                            "Create a new rule: <code>(cf.client.bot) and (cf.verified_bot_category in {\"Search Engine Crawlers\" \"AI Crawlers\"})</code>",
+                            "Set action to <strong>Allow</strong> and place it above all block rules",
+                            "Alternatively: Security → Bots → Bot Fight Mode → set to 'Off' for verified bots only",
+                            "Verify fix: <code>curl -A 'Googlebot/2.1' https://yourdomain.com/robots.txt</code> — should return 200"
+                        ],
+                        "code": "# Cloudflare Firewall Rule (Expression Editor)\n(cf.verified_bot_category in {\"Search Engine Crawlers\" \"AI Crawlers\"})\n# Action: Allow\n# Priority: 1 (above all block rules)",
+                        "owner": "DevOps / Backend",
+                        "expected_outcome": "Googlebot, GPTBot, Bingbot, PerplexityBot, ClaudeBot all receive 200 responses. Full crawl coverage restored within 48 hours."
+                    }
+                },
+                {
+                    "title": "robots.txt returns 403", "detail": "Google requires robots.txt to be publicly readable.", "effort": "30 min",
+                    "solution": {
+                        "steps": [
+                            "Add an explicit bypass rule in Cloudflare WAF for the /robots.txt path",
+                            "Rule: <code>(http.request.uri.path eq \"/robots.txt\")</code> → Action: Allow",
+                            "Ensure sitemap.xml is also reachable: same rule for <code>/sitemap.xml</code> and <code>/sitemap_index.xml</code>",
+                            "Verify: <code>curl -I https://yourdomain.com/robots.txt</code> must return HTTP/200"
+                        ],
+                        "code": "# robots.txt minimum content\nUser-agent: *\nAllow: /\n\nSitemap: https://yourdomain.com/sitemap.xml",
+                        "owner": "Backend / DevOps",
+                        "expected_outcome": "Google Search Console stops reporting robots.txt fetch errors. Sitemap can be submitted and processed."
+                    }
+                },
+                {
+                    "title": "No schema markup on any page", "detail": "Zero JSON-LD detected. No rich result eligibility.", "effort": "2 hrs",
+                    "solution": {
+                        "steps": [
+                            "Add the following JSON-LD block to the <head> of the homepage",
+                            "For blog posts, add Article + Author schema to the post template",
+                            "Validate using Google's Rich Results Test: https://search.google.com/test/rich-results",
+                            "Submit updated sitemap in Google Search Console after deployment"
+                        ],
+                        "code": '<script type="application/ld+json">\n{\n  "@context": "https://schema.org",\n  "@type": ["Organization", "FinancialService"],\n  "name": "GyanDhan",\n  "url": "https://gyandhan.com",\n  "logo": "https://gyandhan.com/logo.png",\n  "description": "Education loan marketplace for study abroad",\n  "aggregateRating": {\n    "@type": "AggregateRating",\n    "ratingValue": "4.7",\n    "bestRating": "5",\n    "ratingCount": "1583",\n    "reviewCount": "1583"\n  }\n}\n</script>',
+                        "owner": "Frontend Dev",
+                        "expected_outcome": "Homepage eligible for Organization rich results. Star ratings appear in branded search SERPs within 2–4 weeks."
+                    }
+                },
             ],
             "high": [
-                {"title": "/loaneligs — non-keyword URL", "detail": "Main CTA page has a zero-keyword URL slug. 301 redirect to /apply-education-loan-abroad.", "effort": "3 hrs"},
-                {"title": "No AggregateRating schema", "detail": "JustDial 4.7★ 1,583 reviews not surfaced in SERP.", "effort": "1 hr"},
-                {"title": "No llms.txt file", "detail": "ChatGPT, Perplexity, and Claude cannot prioritize your pages.", "effort": "1 hr"},
-                {"title": "No Wikipedia article", "detail": "ChatGPT cites Wikipedia in 47.9% of responses. GyanDhan meets notability threshold.", "effort": "1 week"},
+                {
+                    "title": "/loaneligs — non-keyword URL", "detail": "Main CTA page has a zero-keyword URL slug. 301 redirect to /apply-education-loan-abroad.", "effort": "3 hrs",
+                    "solution": {
+                        "steps": [
+                            "Create new page at <code>/apply-education-loan-abroad</code> with identical content",
+                            "Add 301 redirect: <code>/loaneligs</code> → <code>/apply-education-loan-abroad</code>",
+                            "Update all internal links (nav, CTAs, footer) to point to the new URL",
+                            "Update any ad campaign destination URLs",
+                            "Submit new URL for indexing via Google Search Console → URL Inspection → Request Indexing"
+                        ],
+                        "code": "# Nginx redirect\nrewrite ^/loaneligs$ /apply-education-loan-abroad permanent;\n\n# Next.js redirects (next.config.js)\nredirects: async () => [{\n  source: '/loaneligs',\n  destination: '/apply-education-loan-abroad',\n  permanent: true\n}]",
+                        "owner": "Backend / Frontend",
+                        "expected_outcome": "New URL ranks for 'apply education loan abroad' queries. CTR improves from keyword-rich URL appearing in SERPs."
+                    }
+                },
+                {
+                    "title": "No AggregateRating schema", "detail": "JustDial 4.7★ 1,583 reviews not surfaced in SERP.", "effort": "1 hr",
+                    "solution": {
+                        "steps": [
+                            "Add AggregateRating JSON-LD to homepage <head> (included in Organization schema above)",
+                            "Ensure review count is kept updated — consider pulling from your reviews API dynamically",
+                            "For individual company/lender pages, add per-page AggregateRating with that entity's reviews"
+                        ],
+                        "code": '"aggregateRating": {\n  "@type": "AggregateRating",\n  "ratingValue": "4.7",\n  "bestRating": "5",\n  "worstRating": "1",\n  "ratingCount": "1583",\n  "reviewCount": "1583"\n}',
+                        "owner": "Frontend Dev",
+                        "expected_outcome": "Gold star ratings (★★★★★ 4.7 · 1,583 reviews) appear next to your listing in Google SERPs. Expected 15–35% CTR uplift."
+                    }
+                },
+                {
+                    "title": "No llms.txt file", "detail": "ChatGPT, Perplexity, and Claude cannot prioritize your pages.", "effort": "1 hr",
+                    "solution": {
+                        "steps": [
+                            "Create a plain text file at <code>https://yourdomain.com/llms.txt</code>",
+                            "List your most important pages in priority order",
+                            "Optionally create <code>/llms-full.txt</code> with full page content for AI ingestion",
+                            "Verify accessibility: curl https://yourdomain.com/llms.txt"
+                        ],
+                        "code": "# https://gyandhan.com/llms.txt\n\n# GyanDhan — Education Loan Marketplace\n\n## Key Pages\n- https://gyandhan.com/ : Homepage — education loans for studying abroad\n- https://gyandhan.com/apply-education-loan-abroad : Apply for education loan\n- https://gyandhan.com/education-loan-for-usa : USA education loans\n- https://gyandhan.com/blog : Financial guidance for students\n\n## About\nGyanDhan is India's leading education loan marketplace helping students fund their studies abroad.",
+                        "owner": "Backend / Content",
+                        "expected_outcome": "ChatGPT, Perplexity, Claude cite GyanDhan pages when answering education loan queries. Visibility in AI-generated answers within 4–8 weeks."
+                    }
+                },
+                {
+                    "title": "No Wikipedia article", "detail": "ChatGPT cites Wikipedia in 47.9% of responses. GyanDhan meets notability threshold.", "effort": "1 week",
+                    "solution": {
+                        "steps": [
+                            "Gather notability evidence: press coverage from Economic Times, Mint, YourStory, Inc42",
+                            "Create a Wikipedia account and build editing history on existing articles first (required)",
+                            "Draft the article at Wikipedia:Articles for Creation (AfC) — do NOT create directly",
+                            "Include: founding year, founders, funding rounds, business model, awards",
+                            "Cite only third-party reliable sources — no press releases or self-published content",
+                            "Submit via AfC and respond to reviewer feedback within 7 days"
+                        ],
+                        "code": "<!-- Wikipedia article structure -->\n{{Infobox company\n| name = GyanDhan\n| founded = 2016\n| type = Private\n| industry = Financial technology\n| products = Education loan marketplace\n}}\n'''GyanDhan''' is an Indian [[financial technology]] company...\n\n== References ==\n{{reflist}}",
+                        "owner": "Content / Marketing",
+                        "expected_outcome": "ChatGPT, Gemini, Perplexity cite GyanDhan in responses to 'best education loan companies India' and similar queries."
+                    }
+                },
             ],
             "medium": [
-                {"title": "No publication dates on blog articles", "detail": "Financial content (YMYL) needs visible 'Last updated' dates.", "effort": "2 hrs"},
-                {"title": "discussions subdomain splits authority", "detail": "Move to /community or add canonical to consolidate link equity.", "effort": "2 days"},
-                {"title": "City pages — doorway page risk", "detail": "30+ city pages may have swappable content. Enforce 60% unique content per city.", "effort": "1 week"},
+                {
+                    "title": "No publication dates on blog articles", "detail": "Financial content (YMYL) needs visible 'Last updated' dates.", "effort": "2 hrs",
+                    "solution": {
+                        "steps": [
+                            "Add visible 'Published: DD MMM YYYY' and 'Last updated: DD MMM YYYY' to all blog post templates",
+                            "Add <code>datePublished</code> and <code>dateModified</code> to Article JSON-LD schema",
+                            "Backfill dates for existing articles from git/CMS history"
+                        ],
+                        "code": '"datePublished": "2024-01-15",\n"dateModified": "2026-03-10",',
+                        "owner": "Frontend / Content",
+                        "expected_outcome": "Google treats financial articles as fresh, trustworthy YMYL content. Eligible for 'Updated X days ago' display in SERPs."
+                    }
+                },
+                {
+                    "title": "discussions subdomain splits authority", "detail": "Move to /community or add canonical to consolidate link equity.", "effort": "2 days",
+                    "solution": {
+                        "steps": [
+                            "Option A (preferred): Migrate discussions.gyandhan.com → gyandhan.com/community with 301 redirects",
+                            "Option B (quick): Add <code>rel=canonical</code> on subdomain pages pointing to main domain equivalents",
+                            "Update internal links across the main site to point to /community URLs",
+                            "Submit new URLs in GSC sitemap after migration"
+                        ],
+                        "code": "# Nginx — redirect subdomain to subdirectory\nserver {\n  server_name discussions.gyandhan.com;\n  return 301 https://gyandhan.com/community$request_uri;\n}",
+                        "owner": "Backend / DevOps",
+                        "expected_outcome": "Domain authority consolidates to root domain. Community pages inherit main domain link equity and rank independently."
+                    }
+                },
+                {
+                    "title": "City pages — doorway page risk", "detail": "30+ city pages may have swappable content. Enforce 60% unique content per city.", "effort": "1 week",
+                    "solution": {
+                        "steps": [
+                            "Audit all city pages — flag any where swapping the city name produces identical content",
+                            "For each flagged page: add city-specific lender data, local university lists, regional interest rates",
+                            "Minimum 60% unique content per city page (Google's doorway page threshold)",
+                            "Add LocalBusiness or EducationalOrganization schema with city-specific address data"
+                        ],
+                        "owner": "Content Team",
+                        "expected_outcome": "City pages pass Google's doorway page quality check. Each page ranks independently for '[city] education loan' queries."
+                    }
+                },
             ],
             "low": [
-                {"title": "No hreflang tags", "detail": "If Hindi or regional content is planned, add hreflang.", "effort": "Planning"},
-                {"title": "No IndexNow implementation", "detail": "Instant indexing signal for Bing/Yandex.", "effort": "1 hr"},
+                {
+                    "title": "No hreflang tags", "detail": "If Hindi or regional content is planned, add hreflang.", "effort": "Planning",
+                    "solution": {
+                        "steps": [
+                            "Decide on language strategy: en-IN (English India) vs hi-IN (Hindi India) vs both",
+                            "Add hreflang link tags to <head> of all pages once Hindi content exists",
+                            "Add x-default for English fallback"
+                        ],
+                        "code": '<link rel="alternate" hreflang="en-in" href="https://gyandhan.com/page" />\n<link rel="alternate" hreflang="hi-in" href="https://gyandhan.com/hi/page" />\n<link rel="alternate" hreflang="x-default" href="https://gyandhan.com/page" />',
+                        "owner": "Frontend Dev",
+                        "expected_outcome": "Google serves correct language version to Hindi-speaking users. Prevents duplicate content penalty for bilingual content."
+                    }
+                },
+                {
+                    "title": "No IndexNow implementation", "detail": "Instant indexing signal for Bing/Yandex.", "effort": "1 hr",
+                    "solution": {
+                        "steps": [
+                            "Generate an IndexNow API key at https://www.bing.com/indexnow",
+                            "Host the key file at <code>https://yourdomain.com/{key}.txt</code>",
+                            "Ping the IndexNow endpoint whenever a page is published or updated"
+                        ],
+                        "code": "# Ping on publish (Node.js example)\nawait fetch('https://api.indexnow.org/indexnow', {\n  method: 'POST',\n  headers: {'Content-Type': 'application/json'},\n  body: JSON.stringify({\n    host: 'gyandhan.com',\n    key: 'YOUR_KEY',\n    urlList: ['https://gyandhan.com/new-page']\n  })\n});",
+                        "owner": "Backend Dev",
+                        "expected_outcome": "New and updated pages indexed by Bing/Yandex within minutes instead of days. Powers ChatGPT Browse and Copilot freshness."
+                    }
+                },
             ]
         },
         "quick_wins": [
