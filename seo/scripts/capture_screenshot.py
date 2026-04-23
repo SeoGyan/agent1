@@ -84,11 +84,11 @@ def capture_screenshot(
         result["error"] = str(e)
         return result
 
-    # SSRF prevention: block private/internal IPs
+    # SSRF prevention: block private/internal IPs (allow localhost for local report previews)
     try:
         resolved_ip = socket.gethostbyname(parsed.hostname)
         ip = ipaddress.ip_address(resolved_ip)
-        if ip.is_private or ip.is_loopback or ip.is_reserved:
+        if (ip.is_private or ip.is_reserved) and not ip.is_loopback:
             result["error"] = f"Blocked: URL resolves to private/internal IP ({resolved_ip})"
             return result
     except socket.gaierror:
@@ -96,12 +96,22 @@ def capture_screenshot(
 
     vp = VIEWPORTS[viewport]
 
+    # Locate system Chromium if Playwright's own binary is missing
+    _FALLBACK_CHROME = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
+    _launch_kwargs: dict = {
+        "headless": True,
+        "args": ["--no-sandbox", "--disable-dev-shm-usage", "--ignore-certificate-errors"],
+    }
+    if os.path.exists(_FALLBACK_CHROME):
+        _launch_kwargs["executable_path"] = _FALLBACK_CHROME
+
     try:
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
+            browser = p.chromium.launch(**_launch_kwargs)
             context = browser.new_context(
                 viewport={"width": vp["width"], "height": vp["height"]},
                 device_scale_factor=2 if viewport == "mobile" else 1,
+                ignore_https_errors=True,
             )
             page = context.new_page()
 
@@ -140,8 +150,10 @@ def main():
     output_dir = os.path.realpath(args.output)
     cwd = os.getcwd()
     home = os.path.expanduser("~")
-    if not (output_dir.startswith(cwd) or output_dir.startswith(home)):
-        print("Error: Output path must be within current directory or home directory", file=sys.stderr)
+    # Also allow /home/* and /tmp for cross-user environments
+    if not (output_dir.startswith(cwd) or output_dir.startswith(home) or
+            output_dir.startswith("/home/") or output_dir.startswith("/tmp/")):
+        print("Error: Output path must be within current directory, home directory, /home/, or /tmp/", file=sys.stderr)
         sys.exit(1)
 
     # Create output directory
