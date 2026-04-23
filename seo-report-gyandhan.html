@@ -69,7 +69,7 @@
     </div>
     <div class="hero-info">
       <div class="hero-domain">gyandhan.com</div>
-      <div class="hero-meta">Audit Date: April 23, 2026 &nbsp;·&nbsp; Business Type: EdTech / FinTech</div>
+      <div class="hero-meta">Audit Date: April 18, 2026 &nbsp;·&nbsp; Business Type: EdTech / FinTech</div>
       <div class="hero-summary">The site has strong content and brand signals but is blocked to all crawlers including Googlebot. Fixing bot-protection, adding schema markup, and creating an llms.txt will unlock the largest ranking gains.</div>
       <div class="stat-pills">
         <div class="pill">Issues: <strong style="color:#ef4444;">12</strong></div>
@@ -184,268 +184,84 @@ new Chart(document.getElementById('radarChart'),{
     <span style="color:white;font-weight:700;font-size:13px;letter-spacing:.5px;">CRITICAL</span>
     <span style="background:rgba(255,255,255,.25);color:white;border-radius:10px;padding:1px 8px;font-size:12px;">3</span>
   </div>
-  <div style="background:#fef2f2;"><div style="padding:14px 16px;border-bottom:1px solid #fca5a5;">
+  <div style="background:#fef2f2;"><div style="padding:12px 16px;border-bottom:1px solid #fca5a5;last-child:border-none;">
   <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
     <span style="font-weight:600;color:#f1f5f9;">All crawlers blocked (HTTP 403)</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">2 hrs</span>
   </div>
-  <div style="color:#94a3b8;font-size:13px;margin-top:5px;line-height:1.5;">Googlebot, GPTBot, and Bingbot all receive 403. Whitelist verified bots in Cloudflare WAF.</div>
-  <div style="margin-top:10px;">
-  <button onclick="toggleSol('sol_critical_0')" id="btn_sol_critical_0" style="background:none;border:1px solid #334155;color:#3b82f6;font-size:12px;font-weight:600;padding:5px 14px;border-radius:6px;cursor:pointer;transition:all .2s;">💡 View Solution ›</button>
-  <div id="sol_critical_0" style="display:none;margin-top:10px;background:#0c1628;border:1px solid #1e3a8a;border-radius:10px;padding:16px;">
-    <ol style="padding-left:20px;margin:0;display:flex;flex-direction:column;gap:2px;"><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Log in to Cloudflare Dashboard → Security → WAF → Firewall Rules</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Create a new rule: <code>(cf.client.bot) and (cf.verified_bot_category in {"Search Engine Crawlers" "AI Crawlers"})</code></li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Set action to <strong>Allow</strong> and place it above all block rules</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Alternatively: Security → Bots → Bot Fight Mode → set to 'Off' for verified bots only</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Verify fix: <code>curl -A 'Googlebot/2.1' https://yourdomain.com/robots.txt</code> — should return 200</li></ol>
-    <pre style="background:#020617;border:1px solid #334155;border-radius:6px;padding:14px;font-size:12px;color:#7dd3fc;overflow-x:auto;margin-top:12px;white-space:pre-wrap;word-break:break-word;font-family:monospace;"># Cloudflare Firewall Rule (Expression Editor)
-(cf.verified_bot_category in {"Search Engine Crawlers" "AI Crawlers"})
-# Action: Allow
-# Priority: 1 (above all block rules)</pre>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;"><span style="font-size:11px;background:#1e3a5f;color:#60a5fa;padding:3px 10px;border-radius:10px;margin-top:10px;display:inline-block;">🧑‍💻 Owner: DevOps / Backend</span></div>
-    <div style="margin-top:10px;padding:10px 12px;background:#052e16;border-left:3px solid #22c55e;border-radius:0 6px 6px 0;color:#86efac;font-size:12px;line-height:1.5;">✓ Expected outcome: Googlebot, GPTBot, Bingbot, PerplexityBot, ClaudeBot all receive 200 responses. Full crawl coverage restored within 48 hours.</div>
-  </div>
-</div>
-</div><div style="padding:14px 16px;border-bottom:1px solid #fca5a5;">
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Googlebot, GPTBot, and Bingbot all receive 403. Whitelist verified bots in Cloudflare WAF.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fca5a5;last-child:border-none;">
   <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
     <span style="font-weight:600;color:#f1f5f9;">robots.txt returns 403</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">30 min</span>
   </div>
-  <div style="color:#94a3b8;font-size:13px;margin-top:5px;line-height:1.5;">Google requires robots.txt to be publicly readable.</div>
-  <div style="margin-top:10px;">
-  <button onclick="toggleSol('sol_critical_1')" id="btn_sol_critical_1" style="background:none;border:1px solid #334155;color:#3b82f6;font-size:12px;font-weight:600;padding:5px 14px;border-radius:6px;cursor:pointer;transition:all .2s;">💡 View Solution ›</button>
-  <div id="sol_critical_1" style="display:none;margin-top:10px;background:#0c1628;border:1px solid #1e3a8a;border-radius:10px;padding:16px;">
-    <ol style="padding-left:20px;margin:0;display:flex;flex-direction:column;gap:2px;"><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Add an explicit bypass rule in Cloudflare WAF for the /robots.txt path</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Rule: <code>(http.request.uri.path eq "/robots.txt")</code> → Action: Allow</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Ensure sitemap.xml is also reachable: same rule for <code>/sitemap.xml</code> and <code>/sitemap_index.xml</code></li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Verify: <code>curl -I https://yourdomain.com/robots.txt</code> must return HTTP/200</li></ol>
-    <pre style="background:#020617;border:1px solid #334155;border-radius:6px;padding:14px;font-size:12px;color:#7dd3fc;overflow-x:auto;margin-top:12px;white-space:pre-wrap;word-break:break-word;font-family:monospace;"># robots.txt minimum content
-User-agent: *
-Allow: /
-
-Sitemap: https://yourdomain.com/sitemap.xml</pre>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;"><span style="font-size:11px;background:#1e3a5f;color:#60a5fa;padding:3px 10px;border-radius:10px;margin-top:10px;display:inline-block;">🧑‍💻 Owner: Backend / DevOps</span></div>
-    <div style="margin-top:10px;padding:10px 12px;background:#052e16;border-left:3px solid #22c55e;border-radius:0 6px 6px 0;color:#86efac;font-size:12px;line-height:1.5;">✓ Expected outcome: Google Search Console stops reporting robots.txt fetch errors. Sitemap can be submitted and processed.</div>
-  </div>
-</div>
-</div><div style="padding:14px 16px;border-bottom:1px solid #fca5a5;">
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Google requires robots.txt to be publicly readable.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fca5a5;last-child:border-none;">
   <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
     <span style="font-weight:600;color:#f1f5f9;">No schema markup on any page</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">2 hrs</span>
   </div>
-  <div style="color:#94a3b8;font-size:13px;margin-top:5px;line-height:1.5;">Zero JSON-LD detected. No rich result eligibility.</div>
-  <div style="margin-top:10px;">
-  <button onclick="toggleSol('sol_critical_2')" id="btn_sol_critical_2" style="background:none;border:1px solid #334155;color:#3b82f6;font-size:12px;font-weight:600;padding:5px 14px;border-radius:6px;cursor:pointer;transition:all .2s;">💡 View Solution ›</button>
-  <div id="sol_critical_2" style="display:none;margin-top:10px;background:#0c1628;border:1px solid #1e3a8a;border-radius:10px;padding:16px;">
-    <ol style="padding-left:20px;margin:0;display:flex;flex-direction:column;gap:2px;"><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Add the following JSON-LD block to the <head> of the homepage</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">For blog posts, add Article + Author schema to the post template</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Validate using Google's Rich Results Test: https://search.google.com/test/rich-results</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Submit updated sitemap in Google Search Console after deployment</li></ol>
-    <pre style="background:#020617;border:1px solid #334155;border-radius:6px;padding:14px;font-size:12px;color:#7dd3fc;overflow-x:auto;margin-top:12px;white-space:pre-wrap;word-break:break-word;font-family:monospace;"><script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": ["Organization", "FinancialService"],
-  "name": "GyanDhan",
-  "url": "https://gyandhan.com",
-  "logo": "https://gyandhan.com/logo.png",
-  "description": "Education loan marketplace for study abroad",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.7",
-    "bestRating": "5",
-    "ratingCount": "1583",
-    "reviewCount": "1583"
-  }
-}
-</script></pre>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;"><span style="font-size:11px;background:#1e3a5f;color:#60a5fa;padding:3px 10px;border-radius:10px;margin-top:10px;display:inline-block;">🧑‍💻 Owner: Frontend Dev</span></div>
-    <div style="margin-top:10px;padding:10px 12px;background:#052e16;border-left:3px solid #22c55e;border-radius:0 6px 6px 0;color:#86efac;font-size:12px;line-height:1.5;">✓ Expected outcome: Homepage eligible for Organization rich results. Star ratings appear in branded search SERPs within 2–4 weeks.</div>
-  </div>
-</div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Zero JSON-LD detected. No rich result eligibility.</div>
 </div></div>
 </div><div style="margin-bottom:20px;border-radius:10px;overflow:hidden;border:1px solid #fdba74;">
   <div style="background:#f97316;padding:8px 16px;display:flex;align-items:center;gap:8px;">
     <span style="color:white;font-weight:700;font-size:13px;letter-spacing:.5px;">HIGH</span>
     <span style="background:rgba(255,255,255,.25);color:white;border-radius:10px;padding:1px 8px;font-size:12px;">4</span>
   </div>
-  <div style="background:#fff7ed;"><div style="padding:14px 16px;border-bottom:1px solid #fdba74;">
+  <div style="background:#fff7ed;"><div style="padding:12px 16px;border-bottom:1px solid #fdba74;last-child:border-none;">
   <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
     <span style="font-weight:600;color:#f1f5f9;">/loaneligs — non-keyword URL</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">3 hrs</span>
   </div>
-  <div style="color:#94a3b8;font-size:13px;margin-top:5px;line-height:1.5;">Main CTA page has a zero-keyword URL slug. 301 redirect to /apply-education-loan-abroad.</div>
-  <div style="margin-top:10px;">
-  <button onclick="toggleSol('sol_high_0')" id="btn_sol_high_0" style="background:none;border:1px solid #334155;color:#3b82f6;font-size:12px;font-weight:600;padding:5px 14px;border-radius:6px;cursor:pointer;transition:all .2s;">💡 View Solution ›</button>
-  <div id="sol_high_0" style="display:none;margin-top:10px;background:#0c1628;border:1px solid #1e3a8a;border-radius:10px;padding:16px;">
-    <ol style="padding-left:20px;margin:0;display:flex;flex-direction:column;gap:2px;"><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Create new page at <code>/apply-education-loan-abroad</code> with identical content</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Add 301 redirect: <code>/loaneligs</code> → <code>/apply-education-loan-abroad</code></li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Update all internal links (nav, CTAs, footer) to point to the new URL</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Update any ad campaign destination URLs</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Submit new URL for indexing via Google Search Console → URL Inspection → Request Indexing</li></ol>
-    <pre style="background:#020617;border:1px solid #334155;border-radius:6px;padding:14px;font-size:12px;color:#7dd3fc;overflow-x:auto;margin-top:12px;white-space:pre-wrap;word-break:break-word;font-family:monospace;"># Nginx redirect
-rewrite ^/loaneligs$ /apply-education-loan-abroad permanent;
-
-# Next.js redirects (next.config.js)
-redirects: async () => [{
-  source: '/loaneligs',
-  destination: '/apply-education-loan-abroad',
-  permanent: true
-}]</pre>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;"><span style="font-size:11px;background:#1e3a5f;color:#60a5fa;padding:3px 10px;border-radius:10px;margin-top:10px;display:inline-block;">🧑‍💻 Owner: Backend / Frontend</span></div>
-    <div style="margin-top:10px;padding:10px 12px;background:#052e16;border-left:3px solid #22c55e;border-radius:0 6px 6px 0;color:#86efac;font-size:12px;line-height:1.5;">✓ Expected outcome: New URL ranks for 'apply education loan abroad' queries. CTR improves from keyword-rich URL appearing in SERPs.</div>
-  </div>
-</div>
-</div><div style="padding:14px 16px;border-bottom:1px solid #fdba74;">
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Main CTA page has a zero-keyword URL slug. 301 redirect to /apply-education-loan-abroad.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fdba74;last-child:border-none;">
   <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
     <span style="font-weight:600;color:#f1f5f9;">No AggregateRating schema</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1 hr</span>
   </div>
-  <div style="color:#94a3b8;font-size:13px;margin-top:5px;line-height:1.5;">JustDial 4.7★ 1,583 reviews not surfaced in SERP.</div>
-  <div style="margin-top:10px;">
-  <button onclick="toggleSol('sol_high_1')" id="btn_sol_high_1" style="background:none;border:1px solid #334155;color:#3b82f6;font-size:12px;font-weight:600;padding:5px 14px;border-radius:6px;cursor:pointer;transition:all .2s;">💡 View Solution ›</button>
-  <div id="sol_high_1" style="display:none;margin-top:10px;background:#0c1628;border:1px solid #1e3a8a;border-radius:10px;padding:16px;">
-    <ol style="padding-left:20px;margin:0;display:flex;flex-direction:column;gap:2px;"><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Add AggregateRating JSON-LD to homepage <head> (included in Organization schema above)</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Ensure review count is kept updated — consider pulling from your reviews API dynamically</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">For individual company/lender pages, add per-page AggregateRating with that entity's reviews</li></ol>
-    <pre style="background:#020617;border:1px solid #334155;border-radius:6px;padding:14px;font-size:12px;color:#7dd3fc;overflow-x:auto;margin-top:12px;white-space:pre-wrap;word-break:break-word;font-family:monospace;">"aggregateRating": {
-  "@type": "AggregateRating",
-  "ratingValue": "4.7",
-  "bestRating": "5",
-  "worstRating": "1",
-  "ratingCount": "1583",
-  "reviewCount": "1583"
-}</pre>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;"><span style="font-size:11px;background:#1e3a5f;color:#60a5fa;padding:3px 10px;border-radius:10px;margin-top:10px;display:inline-block;">🧑‍💻 Owner: Frontend Dev</span></div>
-    <div style="margin-top:10px;padding:10px 12px;background:#052e16;border-left:3px solid #22c55e;border-radius:0 6px 6px 0;color:#86efac;font-size:12px;line-height:1.5;">✓ Expected outcome: Gold star ratings (★★★★★ 4.7 · 1,583 reviews) appear next to your listing in Google SERPs. Expected 15–35% CTR uplift.</div>
-  </div>
-</div>
-</div><div style="padding:14px 16px;border-bottom:1px solid #fdba74;">
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">JustDial 4.7★ 1,583 reviews not surfaced in SERP.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fdba74;last-child:border-none;">
   <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
     <span style="font-weight:600;color:#f1f5f9;">No llms.txt file</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1 hr</span>
   </div>
-  <div style="color:#94a3b8;font-size:13px;margin-top:5px;line-height:1.5;">ChatGPT, Perplexity, and Claude cannot prioritize your pages.</div>
-  <div style="margin-top:10px;">
-  <button onclick="toggleSol('sol_high_2')" id="btn_sol_high_2" style="background:none;border:1px solid #334155;color:#3b82f6;font-size:12px;font-weight:600;padding:5px 14px;border-radius:6px;cursor:pointer;transition:all .2s;">💡 View Solution ›</button>
-  <div id="sol_high_2" style="display:none;margin-top:10px;background:#0c1628;border:1px solid #1e3a8a;border-radius:10px;padding:16px;">
-    <ol style="padding-left:20px;margin:0;display:flex;flex-direction:column;gap:2px;"><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Create a plain text file at <code>https://yourdomain.com/llms.txt</code></li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">List your most important pages in priority order</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Optionally create <code>/llms-full.txt</code> with full page content for AI ingestion</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Verify accessibility: curl https://yourdomain.com/llms.txt</li></ol>
-    <pre style="background:#020617;border:1px solid #334155;border-radius:6px;padding:14px;font-size:12px;color:#7dd3fc;overflow-x:auto;margin-top:12px;white-space:pre-wrap;word-break:break-word;font-family:monospace;"># https://gyandhan.com/llms.txt
-
-# GyanDhan — Education Loan Marketplace
-
-## Key Pages
-- https://gyandhan.com/ : Homepage — education loans for studying abroad
-- https://gyandhan.com/apply-education-loan-abroad : Apply for education loan
-- https://gyandhan.com/education-loan-for-usa : USA education loans
-- https://gyandhan.com/blog : Financial guidance for students
-
-## About
-GyanDhan is India's leading education loan marketplace helping students fund their studies abroad.</pre>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;"><span style="font-size:11px;background:#1e3a5f;color:#60a5fa;padding:3px 10px;border-radius:10px;margin-top:10px;display:inline-block;">🧑‍💻 Owner: Backend / Content</span></div>
-    <div style="margin-top:10px;padding:10px 12px;background:#052e16;border-left:3px solid #22c55e;border-radius:0 6px 6px 0;color:#86efac;font-size:12px;line-height:1.5;">✓ Expected outcome: ChatGPT, Perplexity, Claude cite GyanDhan pages when answering education loan queries. Visibility in AI-generated answers within 4–8 weeks.</div>
-  </div>
-</div>
-</div><div style="padding:14px 16px;border-bottom:1px solid #fdba74;">
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">ChatGPT, Perplexity, and Claude cannot prioritize your pages.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fdba74;last-child:border-none;">
   <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
     <span style="font-weight:600;color:#f1f5f9;">No Wikipedia article</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1 week</span>
   </div>
-  <div style="color:#94a3b8;font-size:13px;margin-top:5px;line-height:1.5;">ChatGPT cites Wikipedia in 47.9% of responses. GyanDhan meets notability threshold.</div>
-  <div style="margin-top:10px;">
-  <button onclick="toggleSol('sol_high_3')" id="btn_sol_high_3" style="background:none;border:1px solid #334155;color:#3b82f6;font-size:12px;font-weight:600;padding:5px 14px;border-radius:6px;cursor:pointer;transition:all .2s;">💡 View Solution ›</button>
-  <div id="sol_high_3" style="display:none;margin-top:10px;background:#0c1628;border:1px solid #1e3a8a;border-radius:10px;padding:16px;">
-    <ol style="padding-left:20px;margin:0;display:flex;flex-direction:column;gap:2px;"><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Gather notability evidence: press coverage from Economic Times, Mint, YourStory, Inc42</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Create a Wikipedia account and build editing history on existing articles first (required)</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Draft the article at Wikipedia:Articles for Creation (AfC) — do NOT create directly</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Include: founding year, founders, funding rounds, business model, awards</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Cite only third-party reliable sources — no press releases or self-published content</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Submit via AfC and respond to reviewer feedback within 7 days</li></ol>
-    <pre style="background:#020617;border:1px solid #334155;border-radius:6px;padding:14px;font-size:12px;color:#7dd3fc;overflow-x:auto;margin-top:12px;white-space:pre-wrap;word-break:break-word;font-family:monospace;"><!-- Wikipedia article structure -->
-{{Infobox company
-| name = GyanDhan
-| founded = 2016
-| type = Private
-| industry = Financial technology
-| products = Education loan marketplace
-}}
-'''GyanDhan''' is an Indian [[financial technology]] company...
-
-== References ==
-{{reflist}}</pre>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;"><span style="font-size:11px;background:#1e3a5f;color:#60a5fa;padding:3px 10px;border-radius:10px;margin-top:10px;display:inline-block;">🧑‍💻 Owner: Content / Marketing</span></div>
-    <div style="margin-top:10px;padding:10px 12px;background:#052e16;border-left:3px solid #22c55e;border-radius:0 6px 6px 0;color:#86efac;font-size:12px;line-height:1.5;">✓ Expected outcome: ChatGPT, Gemini, Perplexity cite GyanDhan in responses to 'best education loan companies India' and similar queries.</div>
-  </div>
-</div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">ChatGPT cites Wikipedia in 47.9% of responses. GyanDhan meets notability threshold.</div>
 </div></div>
 </div><div style="margin-bottom:20px;border-radius:10px;overflow:hidden;border:1px solid #fcd34d;">
   <div style="background:#f59e0b;padding:8px 16px;display:flex;align-items:center;gap:8px;">
     <span style="color:white;font-weight:700;font-size:13px;letter-spacing:.5px;">MEDIUM</span>
     <span style="background:rgba(255,255,255,.25);color:white;border-radius:10px;padding:1px 8px;font-size:12px;">3</span>
   </div>
-  <div style="background:#fffbeb;"><div style="padding:14px 16px;border-bottom:1px solid #fcd34d;">
+  <div style="background:#fffbeb;"><div style="padding:12px 16px;border-bottom:1px solid #fcd34d;last-child:border-none;">
   <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
     <span style="font-weight:600;color:#f1f5f9;">No publication dates on blog articles</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">2 hrs</span>
   </div>
-  <div style="color:#94a3b8;font-size:13px;margin-top:5px;line-height:1.5;">Financial content (YMYL) needs visible 'Last updated' dates.</div>
-  <div style="margin-top:10px;">
-  <button onclick="toggleSol('sol_medium_0')" id="btn_sol_medium_0" style="background:none;border:1px solid #334155;color:#3b82f6;font-size:12px;font-weight:600;padding:5px 14px;border-radius:6px;cursor:pointer;transition:all .2s;">💡 View Solution ›</button>
-  <div id="sol_medium_0" style="display:none;margin-top:10px;background:#0c1628;border:1px solid #1e3a8a;border-radius:10px;padding:16px;">
-    <ol style="padding-left:20px;margin:0;display:flex;flex-direction:column;gap:2px;"><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Add visible 'Published: DD MMM YYYY' and 'Last updated: DD MMM YYYY' to all blog post templates</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Add <code>datePublished</code> and <code>dateModified</code> to Article JSON-LD schema</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Backfill dates for existing articles from git/CMS history</li></ol>
-    <pre style="background:#020617;border:1px solid #334155;border-radius:6px;padding:14px;font-size:12px;color:#7dd3fc;overflow-x:auto;margin-top:12px;white-space:pre-wrap;word-break:break-word;font-family:monospace;">"datePublished": "2024-01-15",
-"dateModified": "2026-03-10",</pre>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;"><span style="font-size:11px;background:#1e3a5f;color:#60a5fa;padding:3px 10px;border-radius:10px;margin-top:10px;display:inline-block;">🧑‍💻 Owner: Frontend / Content</span></div>
-    <div style="margin-top:10px;padding:10px 12px;background:#052e16;border-left:3px solid #22c55e;border-radius:0 6px 6px 0;color:#86efac;font-size:12px;line-height:1.5;">✓ Expected outcome: Google treats financial articles as fresh, trustworthy YMYL content. Eligible for 'Updated X days ago' display in SERPs.</div>
-  </div>
-</div>
-</div><div style="padding:14px 16px;border-bottom:1px solid #fcd34d;">
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Financial content (YMYL) needs visible 'Last updated' dates.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fcd34d;last-child:border-none;">
   <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
     <span style="font-weight:600;color:#f1f5f9;">discussions subdomain splits authority</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">2 days</span>
   </div>
-  <div style="color:#94a3b8;font-size:13px;margin-top:5px;line-height:1.5;">Move to /community or add canonical to consolidate link equity.</div>
-  <div style="margin-top:10px;">
-  <button onclick="toggleSol('sol_medium_1')" id="btn_sol_medium_1" style="background:none;border:1px solid #334155;color:#3b82f6;font-size:12px;font-weight:600;padding:5px 14px;border-radius:6px;cursor:pointer;transition:all .2s;">💡 View Solution ›</button>
-  <div id="sol_medium_1" style="display:none;margin-top:10px;background:#0c1628;border:1px solid #1e3a8a;border-radius:10px;padding:16px;">
-    <ol style="padding-left:20px;margin:0;display:flex;flex-direction:column;gap:2px;"><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Option A (preferred): Migrate discussions.gyandhan.com → gyandhan.com/community with 301 redirects</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Option B (quick): Add <code>rel=canonical</code> on subdomain pages pointing to main domain equivalents</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Update internal links across the main site to point to /community URLs</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Submit new URLs in GSC sitemap after migration</li></ol>
-    <pre style="background:#020617;border:1px solid #334155;border-radius:6px;padding:14px;font-size:12px;color:#7dd3fc;overflow-x:auto;margin-top:12px;white-space:pre-wrap;word-break:break-word;font-family:monospace;"># Nginx — redirect subdomain to subdirectory
-server {
-  server_name discussions.gyandhan.com;
-  return 301 https://gyandhan.com/community$request_uri;
-}</pre>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;"><span style="font-size:11px;background:#1e3a5f;color:#60a5fa;padding:3px 10px;border-radius:10px;margin-top:10px;display:inline-block;">🧑‍💻 Owner: Backend / DevOps</span></div>
-    <div style="margin-top:10px;padding:10px 12px;background:#052e16;border-left:3px solid #22c55e;border-radius:0 6px 6px 0;color:#86efac;font-size:12px;line-height:1.5;">✓ Expected outcome: Domain authority consolidates to root domain. Community pages inherit main domain link equity and rank independently.</div>
-  </div>
-</div>
-</div><div style="padding:14px 16px;border-bottom:1px solid #fcd34d;">
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Move to /community or add canonical to consolidate link equity.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fcd34d;last-child:border-none;">
   <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
     <span style="font-weight:600;color:#f1f5f9;">City pages — doorway page risk</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1 week</span>
   </div>
-  <div style="color:#94a3b8;font-size:13px;margin-top:5px;line-height:1.5;">30+ city pages may have swappable content. Enforce 60% unique content per city.</div>
-  <div style="margin-top:10px;">
-  <button onclick="toggleSol('sol_medium_2')" id="btn_sol_medium_2" style="background:none;border:1px solid #334155;color:#3b82f6;font-size:12px;font-weight:600;padding:5px 14px;border-radius:6px;cursor:pointer;transition:all .2s;">💡 View Solution ›</button>
-  <div id="sol_medium_2" style="display:none;margin-top:10px;background:#0c1628;border:1px solid #1e3a8a;border-radius:10px;padding:16px;">
-    <ol style="padding-left:20px;margin:0;display:flex;flex-direction:column;gap:2px;"><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Audit all city pages — flag any where swapping the city name produces identical content</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">For each flagged page: add city-specific lender data, local university lists, regional interest rates</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Minimum 60% unique content per city page (Google's doorway page threshold)</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Add LocalBusiness or EducationalOrganization schema with city-specific address data</li></ol>
-    
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;"><span style="font-size:11px;background:#1e3a5f;color:#60a5fa;padding:3px 10px;border-radius:10px;margin-top:10px;display:inline-block;">🧑‍💻 Owner: Content Team</span></div>
-    <div style="margin-top:10px;padding:10px 12px;background:#052e16;border-left:3px solid #22c55e;border-radius:0 6px 6px 0;color:#86efac;font-size:12px;line-height:1.5;">✓ Expected outcome: City pages pass Google's doorway page quality check. Each page ranks independently for '[city] education loan' queries.</div>
-  </div>
-</div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">30+ city pages may have swappable content. Enforce 60% unique content per city.</div>
 </div></div>
 </div><div style="margin-bottom:20px;border-radius:10px;overflow:hidden;border:1px solid #93c5fd;">
   <div style="background:#3b82f6;padding:8px 16px;display:flex;align-items:center;gap:8px;">
     <span style="color:white;font-weight:700;font-size:13px;letter-spacing:.5px;">LOW</span>
     <span style="background:rgba(255,255,255,.25);color:white;border-radius:10px;padding:1px 8px;font-size:12px;">2</span>
   </div>
-  <div style="background:#eff6ff;"><div style="padding:14px 16px;border-bottom:1px solid #93c5fd;">
+  <div style="background:#eff6ff;"><div style="padding:12px 16px;border-bottom:1px solid #93c5fd;last-child:border-none;">
   <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
     <span style="font-weight:600;color:#f1f5f9;">No hreflang tags</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">Planning</span>
   </div>
-  <div style="color:#94a3b8;font-size:13px;margin-top:5px;line-height:1.5;">If Hindi or regional content is planned, add hreflang.</div>
-  <div style="margin-top:10px;">
-  <button onclick="toggleSol('sol_low_0')" id="btn_sol_low_0" style="background:none;border:1px solid #334155;color:#3b82f6;font-size:12px;font-weight:600;padding:5px 14px;border-radius:6px;cursor:pointer;transition:all .2s;">💡 View Solution ›</button>
-  <div id="sol_low_0" style="display:none;margin-top:10px;background:#0c1628;border:1px solid #1e3a8a;border-radius:10px;padding:16px;">
-    <ol style="padding-left:20px;margin:0;display:flex;flex-direction:column;gap:2px;"><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Decide on language strategy: en-IN (English India) vs hi-IN (Hindi India) vs both</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Add hreflang link tags to <head> of all pages once Hindi content exists</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Add x-default for English fallback</li></ol>
-    <pre style="background:#020617;border:1px solid #334155;border-radius:6px;padding:14px;font-size:12px;color:#7dd3fc;overflow-x:auto;margin-top:12px;white-space:pre-wrap;word-break:break-word;font-family:monospace;"><link rel="alternate" hreflang="en-in" href="https://gyandhan.com/page" />
-<link rel="alternate" hreflang="hi-in" href="https://gyandhan.com/hi/page" />
-<link rel="alternate" hreflang="x-default" href="https://gyandhan.com/page" /></pre>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;"><span style="font-size:11px;background:#1e3a5f;color:#60a5fa;padding:3px 10px;border-radius:10px;margin-top:10px;display:inline-block;">🧑‍💻 Owner: Frontend Dev</span></div>
-    <div style="margin-top:10px;padding:10px 12px;background:#052e16;border-left:3px solid #22c55e;border-radius:0 6px 6px 0;color:#86efac;font-size:12px;line-height:1.5;">✓ Expected outcome: Google serves correct language version to Hindi-speaking users. Prevents duplicate content penalty for bilingual content.</div>
-  </div>
-</div>
-</div><div style="padding:14px 16px;border-bottom:1px solid #93c5fd;">
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">If Hindi or regional content is planned, add hreflang.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #93c5fd;last-child:border-none;">
   <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
     <span style="font-weight:600;color:#f1f5f9;">No IndexNow implementation</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1 hr</span>
   </div>
-  <div style="color:#94a3b8;font-size:13px;margin-top:5px;line-height:1.5;">Instant indexing signal for Bing/Yandex.</div>
-  <div style="margin-top:10px;">
-  <button onclick="toggleSol('sol_low_1')" id="btn_sol_low_1" style="background:none;border:1px solid #334155;color:#3b82f6;font-size:12px;font-weight:600;padding:5px 14px;border-radius:6px;cursor:pointer;transition:all .2s;">💡 View Solution ›</button>
-  <div id="sol_low_1" style="display:none;margin-top:10px;background:#0c1628;border:1px solid #1e3a8a;border-radius:10px;padding:16px;">
-    <ol style="padding-left:20px;margin:0;display:flex;flex-direction:column;gap:2px;"><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Generate an IndexNow API key at https://www.bing.com/indexnow</li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Host the key file at <code>https://yourdomain.com/{key}.txt</code></li><li style="padding:4px 0;color:#cbd5e1;font-size:13px;line-height:1.5;">Ping the IndexNow endpoint whenever a page is published or updated</li></ol>
-    <pre style="background:#020617;border:1px solid #334155;border-radius:6px;padding:14px;font-size:12px;color:#7dd3fc;overflow-x:auto;margin-top:12px;white-space:pre-wrap;word-break:break-word;font-family:monospace;"># Ping on publish (Node.js example)
-await fetch('https://api.indexnow.org/indexnow', {
-  method: 'POST',
-  headers: {'Content-Type': 'application/json'},
-  body: JSON.stringify({
-    host: 'gyandhan.com',
-    key: 'YOUR_KEY',
-    urlList: ['https://gyandhan.com/new-page']
-  })
-});</pre>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;"><span style="font-size:11px;background:#1e3a5f;color:#60a5fa;padding:3px 10px;border-radius:10px;margin-top:10px;display:inline-block;">🧑‍💻 Owner: Backend Dev</span></div>
-    <div style="margin-top:10px;padding:10px 12px;background:#052e16;border-left:3px solid #22c55e;border-radius:0 6px 6px 0;color:#86efac;font-size:12px;line-height:1.5;">✓ Expected outcome: New and updated pages indexed by Bing/Yandex within minutes instead of days. Powers ChatGPT Browse and Copilot freshness.</div>
-  </div>
-</div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Instant indexing signal for Bing/Yandex.</div>
 </div></div>
 </div>
 
@@ -627,7 +443,7 @@ await fetch('https://api.indexnow.org/indexnow', {
 </div>
 
   <div style="text-align:center;padding:32px 0;color:#334155;font-size:13px;">
-    Generated by claude-seo v1.9.0 &nbsp;·&nbsp; April 23, 2026
+    Generated by claude-seo v1.9.0 &nbsp;·&nbsp; April 18, 2026
   </div>
 
 </div>
@@ -639,15 +455,6 @@ function downloadHTML(){
   a.href = URL.createObjectURL(blob);
   a.download = 'seo-report-gyandhan-com.html';
   a.click();
-}
-function toggleSol(id){
-  const body = document.getElementById(id);
-  const btn  = document.getElementById('btn_' + id);
-  const open = body.style.display !== 'none';
-  body.style.display = open ? 'none' : 'block';
-  btn.innerHTML  = open ? '💡 View Solution ›' : '💡 Hide Solution ‹';
-  btn.style.color       = open ? '#3b82f6' : '#94a3b8';
-  btn.style.borderColor = open ? '#334155' : '#475569';
 }
 </script>
 
