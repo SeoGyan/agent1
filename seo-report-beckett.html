@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SEO Audit Report — beckett.com</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#020617;color:#e2e8f0;min-height:100vh;}
+  .topbar{background:#0f172a;border-bottom:1px solid #1e293b;padding:14px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;}
+  .logo{font-size:18px;font-weight:800;color:#f1f5f9;letter-spacing:-.3px;}
+  .logo span{color:#3b82f6;}
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:none;text-decoration:none;transition:opacity .2s;}
+  .btn:hover{opacity:.85;}
+  .btn-primary{background:#3b82f6;color:white;}
+  .btn-secondary{background:#1e293b;color:#cbd5e1;border:1px solid #334155;}
+  .btn-group{display:flex;gap:8px;}
+  .hero{background:linear-gradient(135deg,#0f172a 0%,#0c1220 100%);border-bottom:1px solid #1e293b;padding:48px 32px;}
+  .hero-inner{max-width:1100px;margin:0 auto;display:flex;gap:48px;align-items:center;flex-wrap:wrap;}
+  .hero-gauge{text-align:center;flex-shrink:0;}
+  .hero-info{flex:1;min-width:280px;}
+  .hero-domain{font-size:28px;font-weight:800;color:#f1f5f9;margin-bottom:6px;}
+  .hero-meta{color:#64748b;font-size:14px;margin-bottom:16px;}
+  .hero-summary{color:#94a3b8;font-size:15px;line-height:1.6;max-width:600px;}
+  .stat-pills{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+  .pill{background:#1e293b;border:1px solid #334155;border-radius:20px;padding:6px 14px;font-size:13px;color:#94a3b8;}
+  .pill strong{color:#f1f5f9;}
+  .main{max-width:1100px;margin:0 auto;padding:32px;}
+  .section-title{font-size:20px;font-weight:700;color:#f1f5f9;margin:32px 0 16px;padding-bottom:10px;border-bottom:1px solid #1e293b;}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .radar-wrap{background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:20px;}
+  @media print{
+    .topbar .btn-group{display:none;}
+    body{background:white;color:#1e293b;}
+    .topbar,.hero{background:white!important;border-color:#e2e8f0!important;}
+    .hero-domain,.section-title{color:#1e293b!important;}
+  }
+  @media(max-width:700px){
+    .hero-inner{flex-direction:column;}
+    .grid-2{grid-template-columns:1fr;}
+    .topbar{flex-direction:column;gap:12px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">SEO<span>.</span>Report</div>
+  <div class="btn-group">
+    <button class="btn btn-secondary" onclick="downloadHTML()">⬇ Download HTML</button>
+    <button class="btn btn-primary" onclick="window.print()">🖨 Save as PDF</button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-gauge">
+      <svg width="180" height="180" viewBox="0 0 120 120">
+  <circle cx="60" cy="60" r="54" fill="none" stroke="#1e293b" stroke-width="10"/>
+  <circle cx="60" cy="60" r="54" fill="none" stroke="#ef4444" stroke-width="10"
+    stroke-dasharray="128.9 210.4"
+    stroke-dashoffset="84.8"
+    stroke-linecap="round" transform="rotate(-90 60 60)"/>
+  <text x="60" y="55" text-anchor="middle" fill="white" font-size="22" font-weight="700">38</text>
+  <text x="60" y="72" text-anchor="middle" fill="#ef4444" font-size="9" font-weight="600">CRITICAL</text>
+</svg>
+      <div style="color:#64748b;font-size:12px;margin-top:4px;">Overall SEO Score</div>
+    </div>
+    <div class="hero-info">
+      <div class="hero-domain">beckett.com</div>
+      <div class="hero-meta">Audit Date: May 29, 2026 &nbsp;·&nbsp; Business Type: E-Commerce + Publisher (Card Grading, Authentication, Price Guide, Marketplace)</div>
+      <div class="hero-summary">Beckett is the most authoritative brand in sports card grading with 40+ years of history, yet its digital presence is critically fragmented across 4 separate domains that dilute PageRank and authority. A fully-paywalled price database — the industry's largest at 5.5M+ listings — is invisible to Google and every AI assistant. Zero schema markup means no rich results on any page. Fixing domain consolidation and adding Product/Offer schema to marketplace listings are the two highest-ROI moves available.</div>
+      <div class="stat-pills">
+        <div class="pill">Issues: <strong style="color:#ef4444;">22</strong></div>
+        <div class="pill">Critical: <strong style="color:#ef4444;">5</strong></div>
+        <div class="pill">Actions: <strong style="color:#3b82f6;">18</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="section-title">📊 Score Breakdown</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px;"><div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;">
+  <div style="font-size:22px;margin-bottom:4px;">⚙️</div>
+  <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">Technical SEO</div>
+  <div style="font-size:28px;font-weight:800;color:#ef4444;">35</div>
+  <div style="width:80px;background:#1e293b;border-radius:4px;height:8px;margin-top:6px;">
+  <div style="width:35%;background:#ef4444;height:8px;border-radius:4px;transition:width .6s;"></div>
+</div>
+  <div style="font-size:11px;color:#ef4444;margin-top:6px;">Critical</div>
+</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;">
+  <div style="font-size:22px;margin-bottom:4px;">📝</div>
+  <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">Content Quality</div>
+  <div style="font-size:28px;font-weight:800;color:#f97316;">50</div>
+  <div style="width:80px;background:#1e293b;border-radius:4px;height:8px;margin-top:6px;">
+  <div style="width:50%;background:#f97316;height:8px;border-radius:4px;transition:width .6s;"></div>
+</div>
+  <div style="font-size:11px;color:#f97316;margin-top:6px;">Poor</div>
+</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;">
+  <div style="font-size:22px;margin-bottom:4px;">🏷️</div>
+  <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">On-Page SEO</div>
+  <div style="font-size:28px;font-weight:800;color:#f97316;">55</div>
+  <div style="width:80px;background:#1e293b;border-radius:4px;height:8px;margin-top:6px;">
+  <div style="width:55%;background:#f97316;height:8px;border-radius:4px;transition:width .6s;"></div>
+</div>
+  <div style="font-size:11px;color:#f97316;margin-top:6px;">Poor</div>
+</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;">
+  <div style="font-size:22px;margin-bottom:4px;">🔗</div>
+  <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">Schema Markup</div>
+  <div style="font-size:28px;font-weight:800;color:#ef4444;">8</div>
+  <div style="width:80px;background:#1e293b;border-radius:4px;height:8px;margin-top:6px;">
+  <div style="width:8%;background:#ef4444;height:8px;border-radius:4px;transition:width .6s;"></div>
+</div>
+  <div style="font-size:11px;color:#ef4444;margin-top:6px;">Critical</div>
+</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;">
+  <div style="font-size:22px;margin-bottom:4px;">⚡</div>
+  <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">Performance</div>
+  <div style="font-size:28px;font-weight:800;color:#ef4444;">32</div>
+  <div style="width:80px;background:#1e293b;border-radius:4px;height:8px;margin-top:6px;">
+  <div style="width:32%;background:#ef4444;height:8px;border-radius:4px;transition:width .6s;"></div>
+</div>
+  <div style="font-size:11px;color:#ef4444;margin-top:6px;">Critical</div>
+</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;">
+  <div style="font-size:22px;margin-bottom:4px;">🤖</div>
+  <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">AI Search</div>
+  <div style="font-size:28px;font-weight:800;color:#ef4444;">22</div>
+  <div style="width:80px;background:#1e293b;border-radius:4px;height:8px;margin-top:6px;">
+  <div style="width:22%;background:#ef4444;height:8px;border-radius:4px;transition:width .6s;"></div>
+</div>
+  <div style="font-size:11px;color:#ef4444;margin-top:6px;">Critical</div>
+</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px;text-align:center;">
+  <div style="font-size:22px;margin-bottom:4px;">🖼️</div>
+  <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">Images</div>
+  <div style="font-size:28px;font-weight:800;color:#f97316;">50</div>
+  <div style="width:80px;background:#1e293b;border-radius:4px;height:8px;margin-top:6px;">
+  <div style="width:50%;background:#f97316;height:8px;border-radius:4px;transition:width .6s;"></div>
+</div>
+  <div style="font-size:11px;color:#f97316;margin-top:6px;">Poor</div>
+</div></div>
+
+  <div class="grid-2">
+    <div class="radar-wrap">
+      <div style="font-size:15px;font-weight:700;color:#f1f5f9;margin-bottom:16px;">Radar Overview</div>
+      <canvas id="radarChart" style="max-height:300px;"></canvas>
+<script>
+new Chart(document.getElementById('radarChart'),{
+  type:'radar',
+  data:{
+    labels:["Technical", "Content", "On Page", "Schema", "Performance", "Ai Search", "Images"],
+    datasets:[{
+      label:'SEO Score',
+      data:[35, 50, 55, 8, 32, 22, 50],
+      backgroundColor:'rgba(59,130,246,.15)',
+      borderColor:'#3b82f6',
+      pointBackgroundColor:'#3b82f6',
+      pointRadius:4,
+      borderWidth:2
+    }]
+  },
+  options:{
+    responsive:true,
+    scales:{r:{
+      min:0,max:100,
+      ticks:{color:'#475569',font:{size:10},backdropColor:'transparent',stepSize:25},
+      grid:{color:'#1e293b'},
+      pointLabels:{color:'#94a3b8',font:{size:11}}
+    }},
+    plugins:{legend:{display:false}}
+  }
+});
+</script>
+    </div>
+    <div>
+      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:20px;margin-bottom:20px;"><div style="font-size:16px;font-weight:700;color:#f1f5f9;margin-bottom:12px;">⚡ Quick Wins</div><ul style="list-style:none;padding:0;margin:0;"><li style="padding:6px 0;border-bottom:1px solid #1e293b;color:#cbd5e1;font-size:14px;">⚡ Whitelist /robots.txt in Cloudflare WAF — allows Googlebot to verify crawl rules (30 min)</li><li style="padding:6px 0;border-bottom:1px solid #1e293b;color:#cbd5e1;font-size:14px;">⚡ Allow OAI-SearchBot, ChatGPT-User, PerplexityBot in WAF — unblocks AI search visibility (2 hrs)</li><li style="padding:6px 0;border-bottom:1px solid #1e293b;color:#cbd5e1;font-size:14px;">⚡ Add Organization + WebSite + SearchAction JSON-LD to homepage — establishes entity in Knowledge Graph (2 hrs)</li><li style="padding:6px 0;border-bottom:1px solid #1e293b;color:#cbd5e1;font-size:14px;">⚡ Fix /online-price-guide title tag to 'Sports Card Price Guide & Values | Beckett' — keyword CTR lift (30 min)</li><li style="padding:6px 0;border-bottom:1px solid #1e293b;color:#cbd5e1;font-size:14px;">⚡ Add NewsArticle schema + named author bylines to all /news/ articles — E-E-A-T improvement (4 hrs)</li><li style="padding:6px 0;border-bottom:1px solid #1e293b;color:#cbd5e1;font-size:14px;">⚡ Add BreadcrumbList schema via CMS template — affects all category pages instantly (2 hrs)</li><li style="padding:6px 0;border-bottom:1px solid #1e293b;color:#cbd5e1;font-size:14px;">⚡ Create llms.txt at root — AI search guidance for ChatGPT, Perplexity, Claude (2 hrs)</li></ul></div>
+    </div>
+  </div>
+
+  <div class="section-title">🚨 Issues Found</div>
+  <div style="margin-bottom:20px;border-radius:10px;overflow:hidden;border:1px solid #fca5a5;">
+  <div style="background:#ef4444;padding:8px 16px;display:flex;align-items:center;gap:8px;">
+    <span style="color:white;font-weight:700;font-size:13px;letter-spacing:.5px;">CRITICAL</span>
+    <span style="background:rgba(255,255,255,.25);color:white;border-radius:10px;padding:1px 8px;font-size:12px;">5</span>
+  </div>
+  <div style="background:#fef2f2;"><div style="padding:12px 16px;border-bottom:1px solid #fca5a5;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">4-domain fragmentation — authority scattered across beckett.com, beckett-authentication.com, beckettmedia.com, marketplace.beckett.com</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">3–6 months</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Authentication services live on a completely separate TLD (beckett-authentication.com), magazines on beckettmedia.com, and the marketplace on a subdomain. Google treats these as different websites. Every backlink to beckett-authentication.com does not benefit beckett.com. Consolidate authentication under beckett.com/authentication and magazine content under beckett.com/media.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fca5a5;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">robots.txt returns HTTP 403 Forbidden — Googlebot cannot verify crawl directives</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">30 min</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Google requires robots.txt to be publicly accessible (2xx or 404). A 403 response is treated as a crawl error and prevents Googlebot from confirming what is and isn't allowed. Whitelist /robots.txt in Cloudflare WAF as the first fix.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fca5a5;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">Zero schema markup across all page types — no rich results on any Beckett page</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">2–4 weeks</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">No Product, Offer, AggregateRating, BreadcrumbList, Dataset, Organization, or Article JSON-LD detected anywhere on beckett.com. Competitor PSA earns rich results on graded card pages. Beckett's marketplace listings, grading service pages, and news articles are all plain blue links with no SERP enhancements.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fca5a5;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">Online Price Guide fully paywalled — 5.5M+ listings invisible to Google and all AI assistants</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">2–3 months</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Beckett's Online Price Guide is the industry's most comprehensive sports card pricing database (5.5M listings, 25M+ transactions). Every record is behind a subscription wall. When a user asks ChatGPT, Perplexity, or Google AI Mode 'what is a BGS 9.5 LeBron James rookie worth?', the AI cannot cite Beckett — it cites Card Ladder, eBay sold listings, and SportsCardsPro which publish free crawlable data. Beckett's most defensible asset generates zero AI citations.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fca5a5;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">Cloudflare WAF blocks all non-browser user-agents including AI retrieval crawlers</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">2 hrs</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">HTTP 403 Forbidden is returned to ChatGPT-User, Claude-Web, OAI-SearchBot, PerplexityBot, and all AI retrieval agents (not just training crawlers). This is distinct from blocking GPTBot (training). The site is invisible to AI search surfaces. Split WAF policy: block training crawlers (GPTBot, ClaudeBot, CCBot), explicitly allow retrieval crawlers (OAI-SearchBot, ChatGPT-User, Claude-Web, PerplexityBot).</div>
+</div></div>
+</div><div style="margin-bottom:20px;border-radius:10px;overflow:hidden;border:1px solid #fdba74;">
+  <div style="background:#f97316;padding:8px 16px;display:flex;align-items:center;gap:8px;">
+    <span style="color:white;font-weight:700;font-size:13px;letter-spacing:.5px;">HIGH</span>
+    <span style="background:rgba(255,255,255,.25);color:white;border-radius:10px;padding:1px 8px;font-size:12px;">8</span>
+  </div>
+  <div style="background:#fff7ed;"><div style="padding:12px 16px;border-bottom:1px solid #fdba74;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">marketplace.beckett.com subdomain vs. beckett.com/marketplace — PageRank dilution</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">3–6 months</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">The Beckett Marketplace lives on a subdomain. Google may treat subdomains as separate sites for link equity. All backlinks pointing to marketplace.beckett.com do not automatically pass equity to beckett.com. Migration to beckett.com/marketplace would consolidate authority. Note: this requires coordination with the December 2025 acquisition by Collectors.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fdba74;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">/online-price-guide title tag is brand tagline, not keyword phrase</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1 hr</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Title: 'Beckett - Most Trusted Name in Grading, Authentication & Pricing'. The most commercially valuable page targets zero navigational keywords like 'sports card price guide', 'baseball card values', or 'BGS graded card prices'. No user searches for 'most trusted name in grading'.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fdba74;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">Graded card lookup pages are dynamic JS tools — individual cards may have no crawlable static URLs</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">2–3 months</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">The /grading/card-lookup interface appears to be a JavaScript search tool rather than static pages per card. This means individual graded cards (BGS cert #s) cannot be indexed by Google. Every graded card result should have a stable, crawlable URL like /graded-cards/BGS-[cert-number] to unlock long-tail search traffic for specific card+grade combinations.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fdba74;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">No llms.txt file</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">2 hrs</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Now a Google Lighthouse 'Agentic Browsing' audit criterion as of May 2026. Without llms.txt, AI crawlers have no guidance on which pages to prioritize. Should link to grading scale, pricing methodology, verification tool, and key editorial content.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fdba74;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">Generic 'Beckett Media' corporate byline on all news articles — E-E-A-T gap</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1 week</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">The primary news author at /news/author/beckettmedia/ is a corporate entity, not a named human expert. Google's E-E-A-T guidelines favor content attributed to real people with verifiable credentials. Assign article bylines to named individuals (Laroche, Wright, Harner, Vincent) and add Author schema with credentials.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fdba74;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">No Wikipedia article coherently linking Beckett's brand entities</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1 week</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">The Beckett Media Wikipedia article exists but was last substantively updated in 2020 and does not reflect the BGS grading service's current stature, the 2025 acquisition by Collectors, or the digital transformation of the price guide. AI systems use Wikipedia as a primary brand entity source. An outdated/incomplete Wikipedia article weakens AI knowledge graph recognition.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fdba74;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">Dispute policy limited to label typographical errors — no formal grade appeals process</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">2 weeks</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Beckett's published policy covers only label typos. There is no documented appeals process for contested grades — a critical trust gap in an industry where a single grade point (BGS 9 vs 9.5) can represent thousands of dollars in card value. Customer review scores: Sitejabber 1.1/5 (73 reviews). A 'Grading Dispute Process' page would directly address the #1 reason collectors distrust the grading service.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fdba74;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">LCP POOR on mobile — president publicly acknowledged performance issues</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">4–6 weeks</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Multiple sources confirm poor mobile performance on beckett.com. Beckett's own president acknowledged website speed issues in public statements. JavaScript-heavy frontend (React/Angular components likely), marketplace listing pages with heavy image loading, and third-party analytics scripts all contribute. LCP estimated >4s on mobile based on available signals.</div>
+</div></div>
+</div><div style="margin-bottom:20px;border-radius:10px;overflow:hidden;border:1px solid #fcd34d;">
+  <div style="background:#f59e0b;padding:8px 16px;display:flex;align-items:center;gap:8px;">
+    <span style="color:white;font-weight:700;font-size:13px;letter-spacing:.5px;">MEDIUM</span>
+    <span style="background:rgba(255,255,255,.25);color:white;border-radius:10px;padding:1px 8px;font-size:12px;">6</span>
+  </div>
+  <div style="background:#fffbeb;"><div style="padding:12px 16px;border-bottom:1px solid #fcd34d;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">No 'How BGS Grading Works' long-form content — topical authority gap</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1 week</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Beckett has the deepest grading expertise in the industry (40+ years, Ph.D. founder) but does not publish a comprehensive, linkable guide to the grading process. This is the single highest-volume informational query in the card grading category. The grading scale page (/grading/scale) is correct but thin.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fcd34d;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">Named grader profiles absent — anonymous graders weaken E-E-A-T</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">2 weeks</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">The team examining cards is anonymous on beckett.com. PSA and other competitors name their graders and publish qualification standards. For a YMYL-adjacent service where grade decisions affect financial values, anonymous graders are a trust signal gap that Google's Quality Raters will mark down.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fcd34d;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">No Article/NewsArticle schema on /news/ content</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1 day</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">All news articles lack Article JSON-LD with datePublished, dateModified, author (with Person schema), and publisher. This prevents news articles from earning Article rich results and weakens author entity signals.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fcd34d;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">beckett-authentication.com certificate verification on wrong domain</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">3–6 months (with domain migration)</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">BGS certificate verification lives at beckett-authentication.com/verify-certificate instead of beckett.com/verify. Collectors searching for 'beckett certificate verify' may land on a different domain than expected, and the verification tool earns backlinks to the wrong property.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fcd34d;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">Sitejabber 1.1/5 (73 reviews), active Trustpilot complaints — reputation liability</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">Ongoing</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Low consumer review scores citing unresponsive support, subscription billing issues, and grading delays. Google Quality Raters and AI training data index these review pages. No public responses from Beckett visible on Sitejabber.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #fcd34d;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">Acquisition by Collectors (PSA/SGC parent) not addressed in content — perceived independence gap</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1 week</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">As of December 2025, Beckett is owned by the same company as PSA and SGC, controlling ~79% of the grading market. AI responses about grading services increasingly note this consolidation. Beckett has not published content addressing how grading impartiality is maintained post-acquisition.</div>
+</div></div>
+</div><div style="margin-bottom:20px;border-radius:10px;overflow:hidden;border:1px solid #93c5fd;">
+  <div style="background:#3b82f6;padding:8px 16px;display:flex;align-items:center;gap:8px;">
+    <span style="color:white;font-weight:700;font-size:13px;letter-spacing:.5px;">LOW</span>
+    <span style="background:rgba(255,255,255,.25);color:white;border-radius:10px;padding:1px 8px;font-size:12px;">3</span>
+  </div>
+  <div style="background:#eff6ff;"><div style="padding:12px 16px;border-bottom:1px solid #93c5fd;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">Legacy WordPress blog on blogbeckett.wordpress.com — off-domain authority leak</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1 day</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">An old blog on WordPress.com's domain generates content but earns authority for WordPress.com, not beckett.com. Archive and 301-redirect to news.beckett.com or /news/.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #93c5fd;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">No IndexNow implementation</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">1 hr</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">Instant indexing signal for Bing (powers ChatGPT Search, Copilot, Alexa). Takes 1 hour to implement.</div>
+</div><div style="padding:12px 16px;border-bottom:1px solid #93c5fd;last-child:border-none;">
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+    <span style="font-weight:600;color:#f1f5f9;">No hreflang tags</span><span style="font-size:11px;background:#334155;color:#94a3b8;padding:2px 8px;border-radius:10px;margin-left:8px;">Planning</span>
+  </div>
+  <div style="color:#94a3b8;font-size:13px;margin-top:4px;">If Beckett expands to UK, Canadian, or international card markets, hreflang will be needed. Low priority currently but plan for it.</div>
+</div></div>
+</div>
+
+  <div class="section-title">📋 Detailed Analysis</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:20px;margin-bottom:20px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+    <span style="font-size:16px;font-weight:700;color:#f1f5f9;">⚙️ Technical SEO</span>
+    <span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;border-radius:20px;padding:3px 12px;font-size:13px;font-weight:600;">35/100 · Critical</span>
+  </div>
+  <div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">robots.txt returns HTTP 403 — Google cannot verify crawl directives</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">4 separate domains (beckett.com, beckett-authentication.com, beckettmedia.com, marketplace.beckett.com) — authority fragmentation across all properties</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Cloudflare WAF blocks all non-browser agents — AI retrieval crawlers return 403</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">marketplace.beckett.com as subdomain vs. beckett.com/marketplace — potential PageRank dilution</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Graded card lookup pages are JS-rendered dynamic tools — individual card URLs may not be crawlable</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">LCP POOR on mobile — president acknowledged website performance issues publicly</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Certificate verification on beckett-authentication.com/verify — wrong domain for trust-building</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">No sitemap.xml accessible to verify coverage of 5.5M+ listings</span>
+</div></div>
+</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:20px;margin-bottom:20px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+    <span style="font-size:16px;font-weight:700;color:#f1f5f9;">🔗 Schema Markup</span>
+    <span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;border-radius:20px;padding:3px 12px;font-size:13px;font-weight:600;">8/100 · Critical</span>
+  </div>
+  <div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">No Product + Offer + AggregateRating schema on marketplace listings — zero price/availability rich results</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">No Organization + WebSite + SearchAction schema on homepage</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">No Dataset schema on Online Price Guide (5.5M listings — industry's most citable data asset)</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">No BreadcrumbList schema on any category or product page</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">No Article/NewsArticle schema on /news/ content — no author entity signals</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">No ItemList schema on sport-specific price guide category pages</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">No Person schema for Dr. James Beckett or named editorial staff</span>
+</div></div>
+</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:20px;margin-bottom:20px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+    <span style="font-size:16px;font-weight:700;color:#f1f5f9;">📝 Content & E-E-A-T</span>
+    <span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:20px;padding:3px 12px;font-size:13px;font-weight:600;">50/100 · Poor</span>
+  </div>
+  <div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Online Price Guide (5.5M+ listings, 25M+ transactions) fully paywalled — AI assistants cite Card Ladder and eBay instead of Beckett for card value queries</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Corporate byline 'Beckett Media' on news articles — named human authors with credentials needed for E-E-A-T</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">No dispute/appeals process page — policy limited to label typos only; major trust gap for YMYL-adjacent service</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Sitejabber 1.1/5 (73 reviews) — support responsiveness and billing complaints unaddressed publicly</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Named graders absent from /grading/ pages — anonymous graders weaken expertise signals</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Dr. James Beckett's Ph.D. in Statistics and 40-year expertise not prominently featured on grading pages</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#6b7280;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Founder credentials strong: Dr. James Beckett, Ph.D. Statistics (SMU), daily podcast, active public figure</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#6b7280;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Named editorial staff: Stephen Laroche, Ryan Wright, Andrew Harner, Brittany Vincent</span>
+</div></div>
+</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:20px;margin-bottom:20px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+    <span style="font-size:16px;font-weight:700;color:#f1f5f9;">🏷️ On-Page SEO</span>
+    <span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:20px;padding:3px 12px;font-size:13px;font-weight:600;">55/100 · Poor</span>
+  </div>
+  <div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">/online-price-guide title tag: 'Beckett - Most Trusted Name in Grading, Authentication & Pricing' — brand tagline, not keyword phrase</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Homepage title adequate: 'Trading Card Grading, Authentication and Pricing - Beckett Collectibles'</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Grading page title OK: 'Card Grading - Sports, Gaming, Non-Sports Cards' — but could include 'BGS'</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">No breadcrumb rich results in SERPs for any Beckett pages — BreadcrumbList schema absent</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Internal linking between grading, price guide, and marketplace sections unclear — potential cross-category orphan pages</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#6b7280;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">HTTPS confirmed across all domains</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#6b7280;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Sitelinks appear in Google for brand queries — basic site structure recognized</span>
+</div></div>
+</div><div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:20px;margin-bottom:20px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+    <span style="font-size:16px;font-weight:700;color:#f1f5f9;">🤖 AI Search (GEO)</span>
+    <span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;border-radius:20px;padding:3px 12px;font-size:13px;font-weight:600;">22/100 · Critical</span>
+  </div>
+  <div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">AI retrieval crawlers blocked (ChatGPT-User, OAI-SearchBot, PerplexityBot return 403) — site invisible to AI search surfaces</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Paywalled price data: AI cannot answer 'what is a BGS 9.5 LeBron James RC worth?' from Beckett — cites Card Ladder, eBay instead</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">No llms.txt file — no AI content guidance or prioritization</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Wikipedia article outdated (last updated 2020) — does not reflect current grading scale stature, acquisitions, or market position</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Acquisition by Collectors (PSA parent) creates AI perception confusion about grading impartiality</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">Beckett IS cited by AI for 'PSA vs BGS comparison' queries — grading methodology content works</span>
+</div><div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #1e293b;">
+  <span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block;flex-shrink:0;margin-top:5px;"></span><span style="color:#cbd5e1;font-size:14px;">No AI-visible free card value data — 'card value spotlight' pages for top 500 cards would unlock AI citations</span>
+</div></div>
+</div>
+
+  <div class="section-title">🎯 Action Plan</div>
+  <div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;overflow:hidden;margin-bottom:20px;">
+  <div style="padding:16px 20px;border-bottom:1px solid #1e293b;">
+    <span style="font-size:16px;font-weight:700;color:#f1f5f9;">🎯 Prioritized Action Plan</span>
+  </div>
+  <div style="overflow-x:auto;">
+  <table style="width:100%;border-collapse:collapse;">
+    <thead>
+      <tr style="background:#020617;">
+        <th style="padding:10px 14px;text-align:left;color:#475569;font-size:12px;letter-spacing:.5px;">#</th>
+        <th style="padding:10px 14px;text-align:left;color:#475569;font-size:12px;letter-spacing:.5px;">PRIORITY</th>
+        <th style="padding:10px 14px;text-align:left;color:#475569;font-size:12px;letter-spacing:.5px;">ACTION</th>
+        <th style="padding:10px 14px;text-align:left;color:#475569;font-size:12px;letter-spacing:.5px;">EFFORT</th>
+        <th style="padding:10px 14px;text-align:left;color:#475569;font-size:12px;letter-spacing:.5px;">IMPACT</th>
+      </tr>
+    </thead>
+    <tbody><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1</td>
+  <td style="padding:10px 14px;"><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">critical</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Whitelist /robots.txt in Cloudflare WAF (public robots.txt required by Google)</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">30 min</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Required Google compliance</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2</td>
+  <td style="padding:10px 14px;"><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">critical</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Allow AI retrieval crawlers in WAF: OAI-SearchBot, ChatGPT-User, PerplexityBot, Claude-Web</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2 hrs</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Unlocks AI search visibility</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">3</td>
+  <td style="padding:10px 14px;"><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">critical</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Add Organization + WebSite + SearchAction JSON-LD to homepage</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2 hrs</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Entity establishment in Knowledge Graph</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">4</td>
+  <td style="padding:10px 14px;"><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">critical</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Add Product + Offer + AggregateRating schema to all marketplace listing pages</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2–3 weeks</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Price/availability rich results in Google Shopping surface</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">5</td>
+  <td style="padding:10px 14px;"><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">critical</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Add Dataset schema to Online Price Guide landing page</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2 hrs</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Google Dataset Search indexing + AI citation eligibility</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">6</td>
+  <td style="padding:10px 14px;"><span style="background:#ef444422;color:#ef4444;border:1px solid #ef444444;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">critical</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Create publicly-crawlable 'Card Value Spotlight' pages for top 500 most-searched cards</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1–2 months</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Breaks paywalled-data/AI-citation paradox — direct AI citations for card value queries</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">7</td>
+  <td style="padding:10px 14px;"><span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">high</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Fix /online-price-guide title tag to 'Sports Card Price Guide & Values — Beckett OPG'</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">30 min</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Keyword relevance + CTR improvement on primary commercial page</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">8</td>
+  <td style="padding:10px 14px;"><span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">high</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Create llms.txt at root linking to grading scale, methodology, verification, and key editorial pages</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2 hrs</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">AI search prioritization across ChatGPT, Perplexity, Claude</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">9</td>
+  <td style="padding:10px 14px;"><span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">high</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Add BreadcrumbList schema via CMS template across all category and product pages</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2 hrs template, 1 day QA</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Breadcrumb rich results on all pages instantly</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">10</td>
+  <td style="padding:10px 14px;"><span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">high</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Add NewsArticle schema + named author bylines to all /news/ articles</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">4 hrs</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">E-E-A-T improvement for news/editorial content</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">11</td>
+  <td style="padding:10px 14px;"><span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">high</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Create 'How BGS Grading Works' 2,000+ word long-form page with methodology, photo examples, comparison table</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1 week</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Highest-volume informational query in card grading; primary AI citation target</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">12</td>
+  <td style="padding:10px 14px;"><span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">high</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Create 'Grading Dispute Process' page with explicit steps, timeframe, and resolution options</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2 weeks</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Addresses #1 trust gap; directly counters 1.1/5 Sitejabber complaints</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">13</td>
+  <td style="padding:10px 14px;"><span style="background:#f9731622;color:#f97316;border:1px solid #f9731644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">high</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Migrate beckett-authentication.com content to beckett.com/authentication with 301 redirects</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">3–6 months</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Domain authority consolidation — all authentication backlinks flow to beckett.com</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">14</td>
+  <td style="padding:10px 14px;"><span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">medium</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Add named grader profiles with credentials, years of experience, and specialty to /grading/ section</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2 weeks</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">E-E-A-T trust signals for YMYL-adjacent service</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">15</td>
+  <td style="padding:10px 14px;"><span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">medium</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Update Wikipedia article for Beckett Media to reflect 2025 acquisition, current market position, grading scale</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1 week</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">AI knowledge graph accuracy — Wikipedia cited in 47.9% of AI responses</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">16</td>
+  <td style="padding:10px 14px;"><span style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">medium</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Publish annual 'State of the Sports Card Market' report as citable Dataset/Report with schema</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">2 weeks annually</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Establishes Beckett as the authoritative data publisher AI systems reference</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">17</td>
+  <td style="padding:10px 14px;"><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">low</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Archive blogbeckett.wordpress.com and 301-redirect all posts to /news/</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1 day</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">Reclaim off-domain authority leak</td>
+</tr><tr style="border-bottom:1px solid #1e293b;">
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">18</td>
+  <td style="padding:10px 14px;"><span style="background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;text-transform:uppercase;">low</span></td>
+  <td style="padding:10px 14px;color:#f1f5f9;font-size:14px;">Implement IndexNow for Bing/Copilot/Alexa instant indexing</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">1 hr</td>
+  <td style="padding:10px 14px;color:#94a3b8;font-size:13px;">AI surfaces powered by Bing index</td>
+</tr></tbody>
+  </table>
+  </div>
+</div>
+
+  <div style="text-align:center;padding:32px 0;color:#334155;font-size:13px;">
+    Generated by claude-seo v1.9.0 &nbsp;·&nbsp; May 29, 2026
+  </div>
+
+</div>
+
+<script>
+function downloadHTML(){
+  const blob = new Blob([document.documentElement.outerHTML],{type:'text/html'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'seo-report-beckett-com.html';
+  a.click();
+}
+</script>
+
+</body>
+</html>
